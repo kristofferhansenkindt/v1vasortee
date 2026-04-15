@@ -10,7 +10,7 @@ const CONFIG = {
     },
     
     // Configurações do site
-    SITE_NAME: 'Viva Sorte',
+    SITE_NAME: 'Sorte Grande',
     PIX_EXPIRATION_HOURS: 24,
     
     // Chaves públicas (NÃO coloque chaves secretas aqui!)
