@@ -35,8 +35,8 @@ export default async function handler(req, res) {
         // PAYLOAD PARA ALLOW PAY
         const payload = {
             'customer': {
-                'name': input.nome || "Cliente Viva Sorte",
-                'email': cpf.substring(0, 8) + "@vivasorte.temp.com",
+                'name': input.nome || "Cliente Sorte",
+                'email': cpf.substring(0, 8) + "@sorte.temp.com",
                 'phone': telefone,
                 'document': {
                     'type': "CPF",
@@ -60,13 +60,13 @@ export default async function handler(req, res) {
                 'expiresInDays': 1
             },
             'items': [{
-                'title': "Viva Sorte - " + quantidade + " títulos de capitalização",
+                'title': "Sorte - " + quantidade + " títulos de capitalização",
                 'quantity': 1,
                 'unitPrice': valorCentavos,
                 'externalRef': "VS-" + cpf.substring(0, 6)
             }],
             'amount': valorCentavos,
-            'description': "Viva Sorte - " + quantidade + " títulos",
+            'description': "Sorte - " + quantidade + " títulos",
             'externalId': transactionId,
             'postbackUrl': "https://" + req.headers.host + "/api/webhook"
         };
