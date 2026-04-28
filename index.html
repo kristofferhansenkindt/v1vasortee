@@ -1104,85 +1104,83 @@
             
       
          <!-- ETAPA 2: PAGAMENTO (TELEFONE + PIX) -->
-<div id="etapa2" class="etapa">
-    <div class="modal-header">
-        <img src="images/logoviva.png" alt="Sorte" class="logo-modal">
-    </div>
-    
-    <div class="progresso-etapas">
-        <div class="etapa-item completada">
-            <div class="etapa-numero">✓</div>
-            <div class="etapa-nome">Identificação</div>
-        </div>
-        <div class="etapa-item ativa">
-            <div class="etapa-numero">2</div>
-            <div class="etapa-nome">Pagamento</div>
-        </div>
-        <div class="etapa-item">
-            <div class="etapa-numero">3</div>
-            <div class="etapa-nome">Confirmação</div>
-        </div>
-        <div class="etapa-item">
-            <div class="etapa-numero">4</div>
-            <div class="etapa-nome">Concluído</div>
-        </div>
-    </div>
-    
-    <div class="modal-body">
-        <h2>Informe seu telefone</h2>
-        <p>Para contato e confirmação do prêmio</p>
-        
-        <div class="form-group">
-            <label>Telefone (WhatsApp)</label>
-            <input type="tel" id="inputTelefone" placeholder="Ex: (11) 99999-9999" maxlength="20">
-            <div class="exemplo-input">Digite com ou sem o código do Brasil (55). Aceitamos qualquer formato!</div>
-            <div id="erroTelefone" class="mensagem-erro"></div>
-        </div>
-        
-        <div class="resumo-pagamento">
-            <h3>Resumo do pagamento</h3>
-            <div class="detalhes-pagamento">
-                <div><span id="quantidadeResumo">6</span> títulos</div>
-                <div>R$ <span id="valorResumo">5,94</span></div>
-            </div>
-            <div class="total-pagamento">
-                <div>Total</div>
-                <div>R$ <span id="totalResumo">5,94</span></div>
-            </div>
-        </div>
-        
-        <div id="areaPIX" class="area-pix">
-            <div class="qrcode-container">
-                <div id="qrCodeImage"></div>
-                <p style="color: #666; font-size: 13px; margin-top: 10px;">Escaneie o QR Code com seu app bancário</p>
-            </div>
-            
-            <div class="codigo-pix">
-                <p style="color: #333; font-size: 14px; margin-bottom: 8px;">Ou copie o código PIX:</p>
-                <div class="input-copiar">
-                    <input type="text" id="codigoPIX" readonly style="font-size: 11px;">
-                    <button onclick="copiarCodigoPIX()">Copiar</button>
+   <div id="etapa2" class="etapa">
+                <div class="modal-header">
+                    <img src="images/logoviva.png" alt="Sorte" class="logo-modal">
+                </div>
+                
+                <div class="progresso-etapas">
+                    <div class="etapa-item completada">
+                        <div class="etapa-numero">✓</div>
+                        <div class="etapa-nome">Identificação</div>
+                    </div>
+                    <div class="etapa-item ativa">
+                        <div class="etapa-numero">2</div>
+                        <div class="etapa-nome">Pagamento</div>
+                    </div>
+                    <div class="etapa-item">
+                        <div class="etapa-numero">3</div>
+                        <div class="etapa-nome">Confirmação</div>
+                    </div>
+                    <div class="etapa-item">
+                        <div class="etapa-numero">4</div>
+                        <div class="etapa-nome">Concluído</div>
+                    </div>
+                </div>
+                
+                <div class="modal-body">
+                    <h2>Informe seu telefone</h2>
+                    <p>Para contato e confirmação do prêmio</p>
+                    
+                    <div class="form-group">
+                        <label>Telefone (WhatsApp)</label>
+                        <input type="tel" id="inputTelefone" placeholder="Ex: (11) 99999-9999" maxlength="20">
+                        <div class="exemplo-input">Digite com ou sem o código do Brasil (55). Aceitamos qualquer formato!</div>
+                        <div id="erroTelefone" class="mensagem-erro"></div>
+                    </div>
+                    
+                    <div class="resumo-pagamento">
+                        <h3>Resumo do pagamento</h3>
+                        <div class="detalhes-pagamento">
+                            <div><span id="quantidadeResumo">6</span> títulos</div>
+                            <div>R$ <span id="valorResumo">5,94</span></div>
+                        </div>
+                        <div class="total-pagamento">
+                            <div>Total</div>
+                            <div>R$ <span id="totalResumo">5,94</span></div>
+                        </div>
+                    </div>
+                    
+                    <div id="areaPIX" class="area-pix">
+                        <div class="qrcode-container">
+                            <div id="qrCodeImage"></div>
+                            <p style="color: #666; font-size: 13px; margin-top: 10px;">Escaneie o QR Code com seu app bancário</p>
+                        </div>
+                        
+                        <div class="codigo-pix">
+                            <p style="color: #333; font-size: 14px; margin-bottom: 8px;">Ou copie o código PIX:</p>
+                            <div class="input-copiar">
+                                <input type="text" id="codigoPIX" readonly style="font-size: 11px;">
+                                <button onclick="copiarCodigoPIX()">Copiar</button>
+                            </div>
+                        </div>
+                        
+                        <p style="color: #666; font-size: 13px; text-align: center; margin-top: 15px;">
+                            Após o pagamento, aguarde a confirmação automática
+                        </p>
+                    </div>
+                    
+                    <div id="aguardandoConfirmacao" class="aguardando-confirmacao">
+                        <div class="rodinha-grande"></div>
+                        <div class="aguardando-texto">Aguardando confirmação do pagamento</div>
+                        <div class="aguardando-detalhes" id="statusAguardando">Verificando se o pagamento foi realizado...</div>
+                    </div>
+                    
+                    <button id="btnGerarPIX" class="btn-principal" onclick="gerarPIX()">
+                        Gerar PIX para pagamento
+                    </button>
                 </div>
             </div>
-            
-            <p style="color: #666; font-size: 13px; text-align: center; margin-top: 15px;">
-                Após o pagamento, aguarde a confirmação automática
-            </p>
-        </div>
-        
-        <div id="aguardandoConfirmacao" class="aguardando-confirmacao">
-            <div class="rodinha-grande"></div>
-            <div class="aguardando-texto">Aguardando confirmação do pagamento</div>
-            <div class="aguardando-detalhes" id="statusAguardando">Verificando se o pagamento foi realizado...</div>
-        </div>
-        
-        <!-- 🔥 BOTÃO CORRIGIDO -->
-        <button id="btnGerarPIX" class="btn-principal" 
-        onclick="ttq.track('InitiateCheckout'); gerarPIX();">
-            Gerar PIX para pagamento
-        </button>
-    </div>
-</div>
             
             <!-- ETAPA 3: CONFIRMAÇÃO -->
             <div id="etapa3" class="etapa">
